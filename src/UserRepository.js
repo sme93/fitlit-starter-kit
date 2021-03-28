@@ -1,18 +1,19 @@
+const User = require('./User');
+
 class UserRepository {
-  constructor(data) {
-    this.userData = data;
+  constructor(users) {
+    this.userData = users;
   };
-  findUserData = id => {
-    // if (this.userData.id === id) {
-    //   return this.data;
-    // }
-    // const foundUser = this.userData.find(id => {
-    //   return this.userData;
-    // });
-    // console.log(foundUser);
-    // return foundUser;
+  findUserData(id) {
+    const foundUser = this.userData.find(user => user.id === id);
+    return foundUser;
   };
-  calculateAvgStepGoal = () => {
+  calculateAvgStepGoal() {
+    const userAverage = this.userData.reduce((averageGoal, user) => {
+    averageGoal += user.dailyStepGoal / this.userData.length;
+    return averageGoal;
+    }, 0);
+    return userAverage;
   }
 };
 
