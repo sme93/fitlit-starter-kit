@@ -4,17 +4,19 @@
 const user = new User(userData[0]);
 
 const userNameGreeting = document.querySelector('#userGreeting');
-const userInformationSection = document.querySelector('#userInformationSection');
+const userInformationSection = 
+            document.querySelector('#userInformationSection');
+const friendSection = document.querySelector('#friendsSection');
+
 
 
 
 const greetUser = () => {
-  console.log(user);
-  userNameGreeting.innerHTML = `Hi, ${user.getFirstName()}!`
+  userNameGreeting.innerHTML = `Hi, ${user.getFirstName()}!`;
 }
 
 const displayUserInformation = () => {
-    const markup = `
+  const markup = `
     <section class="user-info-card">
       <p><span>Full Name: </span><span>${user.name}</span></p>
       <p><span>Address: </span><span>${user.address}</span></p>
@@ -25,5 +27,11 @@ const displayUserInformation = () => {
   userInformationSection.innerHTML = markup;
 }
 
+const displayFriends = () => {
+    //need function to convert friends.id to actual friend info
+  friendSection.innerHTML = `${user.friends}`;
+}
+
 window.addEventListener('load', greetUser);
 window.addEventListener('load', displayUserInformation);
+window.addEventListener('load', displayFriends);
