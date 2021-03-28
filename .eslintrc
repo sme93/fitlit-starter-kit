@@ -7,7 +7,9 @@
     "jquery": true
   },
   "extends": "eslint:recommended",
-  "parserOptions": { "sourceType": "module" },
+  "parserOptions": { 
+    "sourceType": "module",
+    "ecmaVersion": 2018 },
   "rules": {
     "eqeqeq": ["error", "always"],
     "brace-style": "error",
