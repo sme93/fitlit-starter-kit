@@ -7,6 +7,7 @@ const userNameGreeting = document.querySelector('#userGreeting');
 const userInformationSection = 
             document.querySelector('#userInformationSection');
 const friendSection = document.querySelector('#friendsSection');
+const userAveragesSection = document.querySelector('#userAveragesSection')
 
 
 
