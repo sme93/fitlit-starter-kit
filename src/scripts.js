@@ -1,7 +1,6 @@
-//const User = require('../src/User');
-// import User from "./User"
-// eslint-disable-next-line no-undef
+const allUsers = new UserRepository(userData);
 const user = new User(userData[0]);
+
 
 const userNameGreeting = document.querySelector('#userGreeting');
 const userInformationSection = 
@@ -33,6 +32,11 @@ const displayFriends = () => {
   friendSection.innerHTML = `${user.friends}`;
 }
 
+const displayAllUserAvgs = () => {
+userAveragesSection.innerText = `All User Average:${allUsers.calculateAvgStepGoal()}`;
+}
+
 window.addEventListener('load', greetUser);
 window.addEventListener('load', displayUserInformation);
 window.addEventListener('load', displayFriends);
+window.addEventListener('load', displayAllUserAvgs);
