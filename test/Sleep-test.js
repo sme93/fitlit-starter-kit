@@ -95,5 +95,143 @@ describe('Sleep', () => {
       expect(sleep.getAvgAllTimeSleepQualityByUserId(1)).to.equal(7.5);
     });
 
+    it('should return how many hours slept for a specific day', () => {
+      const sleep = new Sleep([
+        {
+          userID: 1,
+          date: "2019/06/15",
+          hoursSlept: 5,
+        },
+        {
+          userID: 2,
+          date: "2019/06/15",
+          hoursSlept: 8,
+        },
+        {
+          userID: 1,
+          date: "2019/06/16",
+          hoursSlept: 10,
+        },
+      ]);
+
+      expect(sleep.getHoursSleptForUserByDate(1, "2019/06/16")).to.equal(10);
+    });
+
+    it('should return their sleep quality for a specific day', () => {
+      const sleep = new Sleep([
+        {
+          userID: 1,
+          date: "2019/06/15",
+          sleepQuality: 5,
+        },
+        {
+          userID: 2,
+          date: "2019/06/15",
+          sleepQuality: 8,
+        },
+        {
+          userID: 1,
+          date: "2019/06/16",
+          sleepQuality: 10,
+        },
+      ]);
+
+      expect(sleep.getSleepQualityForUserByDate(1, "2019/06/16")).to.equal(10);
+    });
+
+    it('should calculate how many hours slept per day over a week', () => {
+      const sleep = new Sleep([
+        {
+          userID: 1,
+          date: "2019/06/15",
+          hoursSlept: 5,
+        },
+        {
+          userID: 2,
+          date: "2019/06/15",
+          hoursSlept: 8,
+        },
+        {
+          userID: 1,
+          date: "2019/06/16",
+          hoursSlept: 10,
+        },
+        {
+          userID: 1,
+          date: "2019/06/17",
+          hoursSlept: 7.5,
+        },
+        {
+          userID: 1,
+          date: "2019/06/21",
+          hoursSlept: 7.5,
+        },
+        {
+          userID: 1,
+          date: "2019/06/23",
+          hoursSlept: 100,
+        },
+      ]);
+
+      expect(sleep.getDailyAvgSleptByWeekStarting(1, "2019/06/15")).to.equal(7.5);
+    });
+
+    it('should calculate the average sleep quality per day over a week', () => {
+      const sleep = new Sleep([
+        {
+          userID: 1,
+          date: "2019/06/15",
+          sleepQuality: 5,
+        },
+        {
+          userID: 2,
+          date: "2019/06/15",
+          sleepQuality: 8,
+        },
+        {
+          userID: 1,
+          date: "2019/06/16",
+          sleepQuality: 10,
+        },
+        {
+          userID: 1,
+          date: "2019/06/17",
+          sleepQuality: 7.5,
+        },
+        {
+          userID: 1,
+          date: "2019/06/21",
+          sleepQuality: 7.5,
+        },
+        {
+          userID: 1,
+          date: "2019/06/23",
+          sleepQuality: 100,
+        },
+      ]);
+
+      expect(sleep.getDailyAvgSleepQualityByWeekStarting(1, "2019/06/15")).to.equal(7.5);
+    });
   }); 
+  describe('for all users', () => {
+
+    it('returns average sleep quality', () => {
+        const sleep = new Sleep([
+        {
+          userID: 1,
+          sleepQuality: 5,
+        },
+        {
+          userID: 2,
+          sleepQuality: 7.5,
+        },
+        {
+          userID: 3,
+          sleepQuality: 10,
+        },
+      ]);
+
+      expect(sleep.getAvgSleepQuality()).to.equal(7.5);
+    });
+  });
 });
