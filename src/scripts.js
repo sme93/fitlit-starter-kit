@@ -33,7 +33,9 @@ const displayFriends = () => {
 }
 
 const displayAllUserAvgs = () => {
-userAveragesSection.innerText = `All User Average:${allUsers.calculateAvgStepGoal()}`;
+userAveragesSection.innerText = `All User Average:${allUsers.calculateAvgStepGoal()}
+Your Average: ${user.dailyStepGoal}`;
+
 }
 
 window.addEventListener('load', greetUser);
