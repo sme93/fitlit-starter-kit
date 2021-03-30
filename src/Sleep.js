@@ -1,6 +1,6 @@
 class Sleep {
-  constructor(userId) {
-    this.userId = userId;
+  constructor(sleepData) {
+    this.sleepData = sleepData;
   }
 }
 
