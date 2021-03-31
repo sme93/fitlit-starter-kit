@@ -49,12 +49,13 @@ describe('Hydration', () => {
     expect(hydration.hydrationData).to.deep.equal(userData);
   });
 
-  it.skip('should calculate average ounces consumed for a user, for all time', () => {
-
+  it.skip('should calculate average daily ounces consumed for a user, for all time', () => {
+    const allTime = hydration.calculateAllTimeAvg();
+    expect(allTime).to.equal(30)
   });
 
   it('should return ounces consumed for a user, for a specific day', () => {
-    // const ouncesConsumed = hydration.returnOuncesByDate('2019/06/15');
-    expect(hydration.returnOuncesByDate('2019/06/15')).to.equal(20);
+    const ouncesConsumed = hydration.returnOuncesByDate('2019/06/15');
+    expect(ouncesConsumed).to.equal(20);
   });
 })
