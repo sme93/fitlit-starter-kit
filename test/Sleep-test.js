@@ -96,7 +96,7 @@ describe('Sleep', () => {
         expect(sleep.getAvgAllTimeSleepQualityByUserId(1)).to.equal(7.5);
       });
 
-    it.skip('should return how many hours slept for a specific day', () => {
+    it('should return how many hours slept for a specific day', () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -118,7 +118,7 @@ describe('Sleep', () => {
       expect(sleep.getHoursSleptForUserByDate(1, "2019/06/16")).to.equal(10);
     });
 
-    it.skip('should return their sleep quality for a specific day', () => {
+    it('should return their sleep quality for a specific day', () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -140,7 +140,7 @@ describe('Sleep', () => {
       expect(sleep.getSleepQualityForUserByDate(1, "2019/06/16")).to.equal(10);
     });
 
-    it.skip('should calculate how many hours slept per day over a week', () => {
+    it('should calculate how many hours slept per day over a week', () => {
       const sleep = new Sleep([
         {
           userID: 1,

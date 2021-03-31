@@ -3,13 +3,24 @@ class Sleep {
     this.sleepData = sleepData;
   }
 
-  getAvgDailySleepByUserId(userID) {
-    // this is my example for every filter ever
-    const sleepDataByUserId = this.sleepData.filter(dataItem => {
+  __getUserDataById(userID) {
+    return this.sleepData.filter(dataItem => {
       if (userID === dataItem.userID) {
         return dataItem;
       }
     });
+  }
+
+  __getUserDataByDate(userID, date) {
+    return this.sleepData.find(dataItem => {
+      if (userID === dataItem.userID && date === dataItem.date) {
+        return dataItem;
+      }
+    });
+  }
+
+  getAvgDailySleepByUserId(userID) {
+    const sleepDataByUserId = this.__getUserDataById(userID);
     const totalSleeps = sleepDataByUserId.length;
 
     // this is my example for eevery sum ever
@@ -20,11 +31,7 @@ class Sleep {
   }
 
   getAvgAllTimeSleepQualityByUserId(userID) {
-    const sleepDataByUserId = this.sleepData.filter(dataItem => {
-      if (userID === dataItem.userID) {
-        return dataItem;
-      }
-    });
+    const sleepDataByUserId = this.__getUserDataById(userID);
     const totalSleeps = sleepDataByUserId.length;
 
     const totalSleepQualityAmt = sleepDataByUserId.reduce((acc, item) => {
@@ -32,8 +39,24 @@ class Sleep {
     }, 0)
     return totalSleepQualityAmt / totalSleeps;
   }
-}
+  
+  getHoursSleptForUserByDate(userID, date) {
+    const sleepByDate = this.__getUserDataByDate(userID, date);
+    return sleepByDate.hoursSlept;
+  }
 
+  getSleepQualityForUserByDate(userID, date) {
+    const sleepByDate = this.__getUserDataByDate(userID, date);
+    return sleepByDate.sleepQuality;
+  }
+
+  getDailyAvgSleptByWeekStarting(userID, date) {
+    const sleepDataByUserId = this.__getUserDataById(userID);
+    console.log(sleepDataByUserId);
+
+  }
+
+}
 if (typeof module !== 'undefined') {
   module.exports = Sleep;
 }
