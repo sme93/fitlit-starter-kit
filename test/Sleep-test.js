@@ -76,24 +76,25 @@ describe('Sleep', () => {
       expect(sleep.getAvgDailySleepByUserId(1)).to.equal(7.5);
     });
 
-    it('should calculate their average sleep quality per day over all time', () => {
-      const sleep = new Sleep([
-        {
-          userID: 1,
-          sleepQuality: 5,
-        },
-        {
-          userID: 2,
-          sleepQuality: 8,
-        },
-        {
-          userID: 1,
-          sleepQuality: 10,
-        },
-      ]);
+    it('should calculate their average sleep quality per day over all time',
+      () => {
+        const sleep = new Sleep([
+          {
+            userID: 1,
+            sleepQuality: 5,
+          },
+          {
+            userID: 2,
+            sleepQuality: 8,
+          },
+          {
+            userID: 1,
+            sleepQuality: 10,
+          },
+        ]);
 
-      expect(sleep.getAvgAllTimeSleepQualityByUserId(1)).to.equal(7.5);
-    });
+        expect(sleep.getAvgAllTimeSleepQualityByUserId(1)).to.equal(7.5);
+      });
 
     it('should return how many hours slept for a specific day', () => {
       const sleep = new Sleep([
@@ -173,7 +174,9 @@ describe('Sleep', () => {
         },
       ]);
 
-      expect(sleep.getDailyAvgSleptByWeekStarting(1, "2019/06/15")).to.equal(7.5);
+      expect(
+        sleep.getDailyAvgSleptByWeekStarting(1, "2019/06/15")
+      ).to.equal(7.5);
     });
 
     it('should calculate the average sleep quality per day over a week', () => {
@@ -210,13 +213,15 @@ describe('Sleep', () => {
         },
       ]);
 
-      expect(sleep.getDailyAvgSleepQualityByWeekStarting(1, "2019/06/15")).to.equal(7.5);
+      expect(
+        sleep.getDailyAvgSleepQualityByWeekStarting(1, "2019/06/15")
+      ).to.equal(7.5);
     });
   }); 
   describe('for all users', () => {
 
     it('returns average sleep quality', () => {
-        const sleep = new Sleep([
+      const sleep = new Sleep([
         {
           userID: 1,
           sleepQuality: 5,
@@ -232,6 +237,82 @@ describe('Sleep', () => {
       ]);
 
       expect(sleep.getAvgSleepQuality()).to.equal(7.5);
+    });
+
+    it('returns all users with good sleep quality', () => {
+      const sleep = new Sleep([
+        {
+          userID: 1,
+          date: "2019/06/15",
+          sleepQuality: 5,
+        },
+        {
+          userID: 2,
+          date: "2019/06/15",
+          sleepQuality: 8,
+        },
+        {
+          userID: 3,
+          date: "2019/06/16",
+          sleepQuality: 2,
+        },
+        {
+          userID: 1,
+          date: "2019/06/17",
+          sleepQuality: 7.5,
+        },
+        {
+          userID: 2,
+          date: "2019/06/21",
+          sleepQuality: 7.5,
+        },
+        {
+          userID: 4,
+          date: "2019/06/22",
+          sleepQuality: 7.5,
+        },
+      ]);
+
+      expect(
+        sleep.getUsersBySleepQualityByWeekStarting("2019/06/15")
+      ).to.deep.equal([1, 2]);
+    });
+
+    it('returns the best sleeper(s) by date', () => {
+      const sleep = new Sleep([
+        {
+          userID: 1,
+          date: "2019/06/15",
+          hoursSlept: 5,
+        },
+        {
+          userID: 2,
+          date: "2019/06/15",
+          hoursSlept: 8,
+        },
+      ]);
+      expect(sleep.getBestSleepersByDate("2019/06/15").to.deep.equal([2]));
+    });
+
+    it('returns the best sleeper(s) by date', () => {
+      const sleep = new Sleep([
+        {
+          userID: 1,
+          date: "2019/06/15",
+          hoursSlept: 5,
+        },
+        {
+          userID: 2,
+          date: "2019/06/15",
+          hoursSlept: 8,
+        },
+        {
+          userID: 3,
+          date: "2019/06/15",
+          hoursSlept: 8,
+        },
+      ]);
+      expect(sleep.getBestSleepersByDate("2019/06/15").to.deep.equal([2, 3]));
     });
   });
 });
