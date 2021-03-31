@@ -49,7 +49,7 @@ describe('Hydration', () => {
     expect(hydration.hydrationData).to.deep.equal(userData);
   });
 
-  it.skip('should calculate average daily ounces consumed for a user, for all time', () => {
+  it('should calculate average daily ounces consumed for a user, for all time', () => {
     const allTime = hydration.calculateAllTimeAvg();
     expect(allTime).to.equal(30)
   });
