@@ -20,8 +20,13 @@ describe('Hydration', () => {
       },
       {
         "userID": 3,
-        "date": "2019/06/15",
+        "date": "2019/06/14",
         "numOunces": 30
+      },
+      {
+        "userID": 1,
+        "date": "2019/05/10",
+        "numOunces": 40
       }
     ];
 
@@ -35,8 +40,21 @@ describe('Hydration', () => {
     expect(hydration).to.be.an.instanceOf(Hydration);
   });
 
-  it('should take in a user ID and hydration data', () => {
+  it('should take in a user ID', () => {
     expect(hydration.id).to.equal(1);
-    expect(hydration.hydrationData).to.equal(hydrationData);
+  });
+
+  it('should hold hydration data', () => {
+    const userData = hydrationData.filter(data => data.userID === 1);
+    expect(hydration.hydrationData).to.deep.equal(userData);
+  });
+
+  it.skip('should calculate average ounces consumed for a user, for all time', () => {
+
+  });
+
+  it('should return ounces consumed for a user, for a specific day', () => {
+    // const ouncesConsumed = hydration.returnOuncesByDate('2019/06/15');
+    expect(hydration.returnOuncesByDate('2019/06/15')).to.equal(20);
   });
 })
