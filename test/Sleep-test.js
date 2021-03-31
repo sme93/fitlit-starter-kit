@@ -239,7 +239,7 @@ describe('Sleep', () => {
       expect(sleep.getAvgSleepQuality()).to.equal(7.5);
     });
 
-    it('returns all users with good sleep quality', () => {
+    it('returns all users with good sleep quality (over 3)', () => {
       const sleep = new Sleep([
         {
           userID: 1,
