@@ -1,5 +1,5 @@
 
-
+// VARIABLES & QUERY SELECTORS 
 const allUsers = new UserRepository(userData);
 const hydration = new Hydration(1, hydrationData);
 const user = new User(userData[0]);
@@ -12,6 +12,12 @@ const friendSection = document.querySelector('#friendsSection');
 const userAveragesSection = document.querySelector('#userAveragesSection');
 const hydrationSection = document.querySelector('#hydrationSection');
 
+
+// EVENT LISTENERS 
+window.addEventListener('load', displayAllInfo);
+
+
+//FUNCTIONS 
 const displayAllInfo = () => {
   greetUser();
   displayUserInformation();
@@ -19,7 +25,6 @@ const displayAllInfo = () => {
   displayAllUserAvgs();
   displayHydrationInfo();
 }
-
 
 const greetUser = () => {
   userNameGreeting.innerHTML = `Hi, ${user.getFirstName()}!`;
@@ -45,7 +50,7 @@ const displayFriends = () => {
 const displayAllUserAvgs = () => {
 userAveragesSection.innerText = `All User Average:${allUsers.calculateAvgStepGoal()}
 Your Average: ${user.dailyStepGoal}`;
-};
+}
 
 const displayHydrationInfo = () => {
   const latestWeek = hydration.findDailyFluidIntakeForWeek('2019/09/16');
@@ -57,6 +62,4 @@ const displayHydrationInfo = () => {
 
   hydrationSection.innerText = `Today's Water Consumption: ${hydration.returnOuncesByDate('2019/09/22')} ounces
   Weekly Consumption: ${stringifiedWeek}`;
-};
-
-window.addEventListener('load', displayAllInfo);
+}
