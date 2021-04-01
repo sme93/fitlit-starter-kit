@@ -52,8 +52,7 @@ class Sleep {
 
   getDailyAvgSleptByWeekStarting(userID, date) {
     const sleepDataByUserId = this.__getUserDataById(userID);
-    console.log(sleepDataByUserId);
-
+    //to be continued...
   }
 
 }
