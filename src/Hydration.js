@@ -19,13 +19,14 @@ class Hydration {
     return result.numOunces;
   };
 
-  findWeeklyFluidIntake(startDate) {
+  findDailyFluidIntakeForWeek(startDate) {
     const dates = this.hydrationData.map(data => data.date);
-    const startPoint = dates.indexOf(startDate);
-    const weeklyOunces = dates.slice(startPoint, startPoint + 7);
-    console.log(weeklyOunces);
-  };
+    const startPoint = dates.indexOf(startDate); 
+    const weeklyOunces = this.hydrationData.slice(startPoint, startPoint + 7);
+    return weeklyOunces;
+  }
 }
+
 
 if (typeof module !== 'undefined') {
   module.exports = Hydration;
