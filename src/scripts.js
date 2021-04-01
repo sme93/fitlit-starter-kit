@@ -1,4 +1,7 @@
+
+
 const allUsers = new UserRepository(userData);
+const hydration = new Hydration(1, hydrationData);
 const user = new User(userData[0]);
 
 
@@ -6,9 +9,16 @@ const userNameGreeting = document.querySelector('#userGreeting');
 const userInformationSection = 
             document.querySelector('#userInformationSection');
 const friendSection = document.querySelector('#friendsSection');
-const userAveragesSection = document.querySelector('#userAveragesSection')
+const userAveragesSection = document.querySelector('#userAveragesSection');
+const hydrationSection = document.querySelector('#hydrationSection');
 
-
+const displayAllInfo = () => {
+  greetUser();
+  displayUserInformation();
+  displayFriends();
+  displayAllUserAvgs();
+  displayHydrationInfo();
+}
 
 
 const greetUser = () => {
@@ -35,10 +45,18 @@ const displayFriends = () => {
 const displayAllUserAvgs = () => {
 userAveragesSection.innerText = `All User Average:${allUsers.calculateAvgStepGoal()}
 Your Average: ${user.dailyStepGoal}`;
+};
 
-}
+const displayHydrationInfo = () => {
+  const latestWeek = hydration.findDailyFluidIntakeForWeek('2019/09/16');
+  const latestWeekToDisplay = latestWeek.reduce((acc, {numOunces, date}) => {
+    acc[date] = numOunces;
+    return acc;
+  }, {});
+  const stringifiedWeek = JSON.stringify(latestWeekToDisplay);
 
-window.addEventListener('load', greetUser);
-window.addEventListener('load', displayUserInformation);
-window.addEventListener('load', displayFriends);
-window.addEventListener('load', displayAllUserAvgs);
+  hydrationSection.innerText = `Today's Water Consumption: ${hydration.returnOuncesByDate('2019/09/22')} ounces
+  Weekly Consumption: ${stringifiedWeek}`;
+};
+
+window.addEventListener('load', displayAllInfo);
