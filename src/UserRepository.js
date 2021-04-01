@@ -1,5 +1,3 @@
-const User = require('./User');
-
 class UserRepository {
   constructor(users) {
     this.userData = users;
@@ -17,4 +15,6 @@ class UserRepository {
   }
 };
 
-module.exports = UserRepository;
+if (typeof module !== 'undefined') {
+  module.exports = UserRepository;
+}
