@@ -2,6 +2,11 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/eae4585e69.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" type="text/css" href="./styles.css">
     <title>Activity Tracker</title>
   </head>
   <body>
@@ -17,27 +22,31 @@
       </section>
       <section class="user-data-display-container">
         <section class="hydration" id="hydrationSection">
-          <h3>hydration!</h3>
+          <h3></h3>
+          <i class="fas fa-tint fa-5x"></i>
         </section>
         <section class="sleep">
-          <h3>sleep!</h3>
+          <i class="far fa-moon fa-5x"></i>
+          <h3>sleep today!</h3>
         </section>
         <section class="steps">
-          <h3>steps!</h3>
+          <i class="fas fa-walking fa-5x"></i>
+          <h3>steps today!</h3>
         </section>
         <section class="minutes-active">
-          <h3>minutes active!</h3>
+          <i class="fas fa-chart-line fa-5x"></i>
+          <h3>activity today!</h3>
+        </section>
+      </section>
+      <section class="all-user-comparison-container">
+        <section class="friends" id="friendsSection">
+          <h3>friends data? probably not?</h3>
+        </section>
+        <section class="user-averages" id="userAveragesSection">
+          <h3>all users data</h3>
         </section>
       </section>
     </main>
-    <section class="all-user-comparison-container">
-      <section class="friends" id="friendsSection">
-        <h3>friends data? probably not?</h3>
-      </section>
-      <section class="user-averages" id="userAveragesSection">
-        <h3>all users data</h3>
-      </section>
-    </section>
     <script src="../node_modules/dayjs/dayjs.min.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
