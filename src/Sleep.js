@@ -1,6 +1,20 @@
+const dayjs = require("dayjs");
+var isSameOrBefore = require('dayjs/plugin/isSameOrBefore')
+dayjs.extend(isSameOrBefore);
+var isSameOrAfter = require('dayjs/plugin/isSameOrAfter')
+dayjs.extend(isSameOrAfter);
+
+
 class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;
+    const devinsBday = dayjs("9/21/78")
+    const thisMomentRightNow = dayjs()
+    const sarahsBday = dayjs("12/14/78")
+    const sevenDaysFromNow = dayjs("4/1/21").add(7, 'day');
+    //console.log(devinsBday.isAfter(sarahsBday));
+    //console.log(devinsBday.isBefore(thisMomentRightNow));
+    //console.log(sevenDaysFromNow.isAfter(thisMomentRightNow));
   }
 
   __getUserDataById(userID) {
@@ -26,7 +40,7 @@ class Sleep {
     // this is my example for eevery sum ever
     const totalSleepAmt = sleepDataByUserId.reduce((acc, item) => {
       return acc + item.hoursSlept;
-    }, 0)
+    }, 0);
     return totalSleepAmt / totalSleeps;
   }
 
@@ -52,10 +66,28 @@ class Sleep {
 
   getDailyAvgSleptByWeekStarting(userID, date) {
     const sleepDataByUserId = this.__getUserDataById(userID);
-    //to be continued...
-  }
+    const firstDay = dayjs(date);
+    const lastDay = firstDay.add(7, 'day');
 
+    const daysInAWeek = sleepDataByUserId.filter(dataItem => {
+      const currentIterationDate = dayjs(dataItem.date);
+      if (
+          currentIterationDate.isSameOrBefore(lastDay) 
+        && currentIterationDate.isSameOrAfter(firstDay)
+        ) {
+        return dataItem;
+      }
+    });
+
+    const totalSleepAmt = daysInAWeek.reduce((acc, item) => {
+      return acc + item.hoursSlept;
+    }, 0);
+
+    return totalSleepAmt / daysInAWeek.length; 
+  }
 }
+
 if (typeof module !== 'undefined') {
   module.exports = Sleep;
 }
+
