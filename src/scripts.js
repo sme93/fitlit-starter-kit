@@ -13,10 +13,6 @@ const userAveragesSection = document.querySelector('#userAveragesSection');
 const hydrationSection = document.querySelector('#hydrationSection');
 
 
-// EVENT LISTENERS 
-window.addEventListener('load', displayAllInfo);
-
-
 //FUNCTIONS 
 const displayAllInfo = () => {
   greetUser();
@@ -63,3 +59,7 @@ const displayHydrationInfo = () => {
   hydrationSection.innerText = `Today's Water Consumption: ${hydration.returnOuncesByDate('2019/09/22')} ounces
   Weekly Consumption: ${stringifiedWeek}`;
 }
+
+
+// EVENT LISTENERS 
+window.addEventListener('load', displayAllInfo);
