@@ -239,7 +239,7 @@ describe('Sleep', () => {
       expect(sleep.getAllUsersAvgSleepQuality()).to.equal(7.5);
     });
 
-    it.skip('returns all users with good sleep quality (over 3)', () => {
+    it('returns all users with good sleep quality (over 3)', () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -249,12 +249,12 @@ describe('Sleep', () => {
         {
           userID: 2,
           date: "2019/06/15",
-          sleepQuality: 8,
+          sleepQuality: 1,
         },
         {
           userID: 3,
           date: "2019/06/16",
-          sleepQuality: 2,
+          sleepQuality: 3.5,
         },
         {
           userID: 1,
@@ -264,7 +264,7 @@ describe('Sleep', () => {
         {
           userID: 2,
           date: "2019/06/21",
-          sleepQuality: 7.5,
+          sleepQuality: 3,
         },
         {
           userID: 4,
@@ -275,10 +275,10 @@ describe('Sleep', () => {
 
       expect(
         sleep.getUsersBySleepQualityByWeekStarting("2019/06/15")
-      ).to.deep.equal([1, 2]);
+      ).to.deep.equal([1, 3]);
     });
 
-    it.skip('returns the best sleeper(s) by date', () => {
+    it('returns the best sleeper by date', () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -291,10 +291,10 @@ describe('Sleep', () => {
           hoursSlept: 8,
         },
       ]);
-      expect(sleep.getBestSleepersByDate("2019/06/15").to.deep.equal([2]));
+      expect(sleep.getBestSleepersByDate("2019/06/15")).to.deep.equal([2]);
     });
 
-    it.skip('returns the best sleeper(s) by date', () => {
+    it('returns the best sleepers by date', () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -312,7 +312,7 @@ describe('Sleep', () => {
           hoursSlept: 8,
         },
       ]);
-      expect(sleep.getBestSleepersByDate("2019/06/15").to.deep.equal([2, 3]));
+      expect(sleep.getBestSleepersByDate("2019/06/15")).to.deep.equal([2, 3]);
     });
   });
 });
