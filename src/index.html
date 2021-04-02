@@ -2,6 +2,9 @@
 <html>
   <head>
     <meta charset="UTF-8">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./styles.css">
     <title>Activity Tracker</title>
   </head>
   <body>
@@ -29,15 +32,23 @@
           <h3>minutes active!</h3>
         </section>
       </section>
+      <section class="all-user-comparison-container">
+        <section class="friends" id="friendsSection">
+          <h3>friends data? probably not?</h3>
+        </section>
+        <section class="user-averages" id="userAveragesSection">
+          <h3>all users data</h3>
+        </section>
+      </section>
     </main>
-    <section class="all-user-comparison-container">
+    <!-- <section class="all-user-comparison-container">
       <section class="friends" id="friendsSection">
         <h3>friends data? probably not?</h3>
       </section>
       <section class="user-averages" id="userAveragesSection">
         <h3>all users data</h3>
       </section>
-    </section>
+    </section> -->
     <script src="../node_modules/dayjs/dayjs.min.js"></script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
