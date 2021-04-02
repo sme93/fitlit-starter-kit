@@ -179,7 +179,7 @@ describe('Sleep', () => {
       ).to.equal(7.5);
     });
 
-    it.skip('should calculate the average sleep quality per day over a week', () => {
+    it('should calculate the average sleep quality per day over a week', () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -220,7 +220,7 @@ describe('Sleep', () => {
   }); 
   describe('for all users', () => {
 
-    it.skip('returns average sleep quality', () => {
+    it('returns average sleep quality', () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -236,7 +236,7 @@ describe('Sleep', () => {
         },
       ]);
 
-      expect(sleep.getAvgSleepQuality()).to.equal(7.5);
+      expect(sleep.getAllUsersAvgSleepQuality()).to.equal(7.5);
     });
 
     it.skip('returns all users with good sleep quality (over 3)', () => {

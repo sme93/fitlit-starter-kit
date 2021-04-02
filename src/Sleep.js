@@ -72,9 +72,9 @@ class Sleep {
     const daysInAWeek = sleepDataByUserId.filter(dataItem => {
       const currentIterationDate = dayjs(dataItem.date);
       if (
-          currentIterationDate.isSameOrBefore(lastDay) 
+        currentIterationDate.isSameOrBefore(lastDay) 
         && currentIterationDate.isSameOrAfter(firstDay)
-        ) {
+      ) {
         return dataItem;
       }
     });
@@ -84,6 +84,35 @@ class Sleep {
     }, 0);
 
     return totalSleepAmt / daysInAWeek.length; 
+  }
+
+  getDailyAvgSleepQualityByWeekStarting(userID, date) {
+    const sleepDataByUserId = this.__getUserDataById(userID);
+    const firstDay = dayjs(date);
+    const lastDay = firstDay.add(7, 'day');
+
+    const daysInAWeek = sleepDataByUserId.filter(dataItem => {
+      const currentIterationDate = dayjs(dataItem.date);
+      if (currentIterationDate.isSameOrBefore(lastDay)
+      && currentIterationDate.isSameOrAfter(firstDay)
+      ) {
+        return dataItem;
+      }
+    });
+
+    const totalSleepQuality = daysInAWeek.reduce((acc, item) => {
+      return acc + item.sleepQuality;
+    }, 0);
+
+    return totalSleepQuality / daysInAWeek.length;
+  }
+
+  getAllUsersAvgSleepQuality() {
+    const sleepQualityTotal = this.sleepData.reduce((acc, item) => {
+      return acc + item.sleepQuality;
+    }, 0);
+
+    return sleepQualityTotal / this.sleepData.length;
   }
 }
 
