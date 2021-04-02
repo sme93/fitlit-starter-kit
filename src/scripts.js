@@ -13,6 +13,7 @@ const userAveragesSection = document.querySelector('#userAveragesSection');
 const hydrationSection = document.querySelector('#hydrationSection');
 
 
+
 //FUNCTIONS 
 const displayAllInfo = () => {
   greetUser();
@@ -48,6 +49,8 @@ userAveragesSection.innerText = `All User Average:${allUsers.calculateAvgStepGoa
 Your Average: ${user.dailyStepGoal}`;
 }
 
+
+//For this function, I'm planning on just reducing it to display the info we want back in the hydration file. For that commented out code on line 67, I figured we could have that information display once we click on the hydration widget, and toggle to a different page or something! Definitely a work in progress, feel free to make changes as you see fit! 
 const displayHydrationInfo = () => {
   const latestWeek = hydration.findDailyFluidIntakeForWeek('2019/09/16');
   const latestWeekToDisplay = latestWeek.reduce((acc, {numOunces, date}) => {
@@ -56,8 +59,12 @@ const displayHydrationInfo = () => {
   }, {});
   const stringifiedWeek = JSON.stringify(latestWeekToDisplay);
 
-  hydrationSection.innerText = `Today's Water Consumption: ${hydration.returnOuncesByDate('2019/09/22')} ounces
-  Weekly Consumption: ${stringifiedWeek}`;
+  hydrationSection.innerHTML = ` 
+  <section class="hydration" id="hydrationSection">
+  <i class="fas fa-tint fa-5x"></i>
+  <h3>${hydration.returnOuncesByDate('2019/09/22')} ounces <br> today</h3>
+  </section>`
+  // Weekly Consumption: ${stringifiedWeek}`;
 }
 
 
