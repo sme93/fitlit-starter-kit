@@ -1,64 +1,91 @@
-/* * {
-  border: 1px solid red;
+* {
+  /* border: 1px solid red; */
   font-family: 'Roboto', sans-serif;
-} */
-
-/* body {
-  display: flex;
-} */
-
-/* .main-container {
-  display: flex;
-  flex-wrap: nowrap;
-  height: 100%;
-  width: 75%;
-} */
-
-
-
-@media screen and (max-width: 1440px) {
-  .main-container {
-    display: flex;
-    flex-wrap: nowrap;
-    height: 100vh;
-    width: 100vw;
-  }
-
-  .user-information-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 20vw;
-  }
-
-  .greeting-container {
-    text-align: center;
-  }
-
-  .user-data-display-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 100vh;
-    width: 60vw;
-  }
-
-  .all-user-comparison-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    width: 20vw;
-  }
 }
 
-/* @media screen and (max-width: 375px) {
+h3 {
+  font-size: 25px;
+}
+
+.hydration {
+  background-color: #66EFC5;
+}
+
+.sleep {
+  background-color: #FE91DC;
+}
+
+.steps {
+  background-color: #FFC600;
+}
+
+.minutes-active {
+  background-color: #B7C7FE;
+}
+
+.hydration:hover,
+.sleep:hover,
+.steps:hover,
+.minutes-active:hover {
+  opacity: 60%;
+}
+
+.main-container {
+  display: flex;
+  flex-wrap: nowrap;
+  height: 100vh;
+  width: 100vw;
+  }
+
+.user-information-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 20vw;
+}
+
+.greeting-container {
+  text-align: center;
+}
+
+.user-data-display-container {
+  display: grid;
+  grid-gap: 1.5%;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr); 
+  margin: auto;
+}
+
+.hydration,
+.sleep,
+.steps,
+.minutes-active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 45vh;
+  width: 25vw;
+  opacity: 100%;
+  color: white;
+  border-radius: 5%;
+  margin: auto;
+}
+
+
+.all-user-comparison-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 20vw;
+}
+
+
+@media screen and (max-width: 375px) {
   .main-container {
     display: flex;
+    flex-direction: column;
   }
 
-  .user-information-container {
-    display: flex;
-    width: ;
-  }
-
-} */
+}
