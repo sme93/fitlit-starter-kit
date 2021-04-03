@@ -21,33 +21,37 @@
         </section>
       </section>
       <section class="user-data-display-container">
-        <section class="hydration" id="hydrationSection">
+        <section class="card hydration" id="hydrationSection">
           <h3></h3>
           <i class="fas fa-tint fa-5x"></i>
         </section>
-        <section class="sleep">
-          <i class="far fa-moon fa-5x"></i>
-          <h3>sleep today!</h3>
+        <section class="card sleep flip-card" id="sleepSection">
         </section>
-        <section class="steps">
+        <section class="card steps">
           <i class="fas fa-walking fa-5x"></i>
           <h3>steps today!</h3>
         </section>
-        <section class="minutes-active">
+        <section class="card minutes-active">
           <i class="fas fa-chart-line fa-5x"></i>
           <h3>activity today!</h3>
         </section>
       </section>
       <section class="all-user-comparison-container">
-        <section class="friends" id="friendsSection">
+        <section class="card friends" id="friendsSection">
           <h3>friends data? probably not?</h3>
         </section>
-        <section class="user-averages" id="userAveragesSection">
+        <section class="card user-averages" id="userAveragesSection">
           <h3>all users data</h3>
         </section>
       </section>
     </main>
     <script src="../node_modules/dayjs/dayjs.min.js"></script>
+    <script src="../node_modules/dayjs/plugin/isSameOrBefore.js"></script>
+    <script src="../node_modules/dayjs/plugin/isSameOrAfter.js"></script>
+    <script>
+      dayjs.extend(dayjs_plugin_isSameOrAfter);
+      dayjs.extend(dayjs_plugin_isSameOrBefore);
+    </script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
@@ -55,6 +59,7 @@
     <script type="text/javascript" src="./User.js"></script>
     <script type="text/javascript" src="./UserRepository.js"></script>
     <script type="text/javascript" src="./Hydration.js"></script>
+    <script type ="text/javascript" src="./Sleep.js"></script>
     <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

@@ -1,9 +1,10 @@
-const dayjs = require("dayjs");
-const isSameOrBefore = require('dayjs/plugin/isSameOrBefore');
-const isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
-dayjs.extend(isSameOrBefore);
-dayjs.extend(isSameOrAfter);
-
+if (typeof module !== 'undefined') {
+  const dayjs = require("dayjs");
+  const isSameOrBefore = require('dayjs/plugin/isSameOrBefore');
+  const isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
+  dayjs.extend(isSameOrBefore);
+  dayjs.extend(isSameOrAfter);
+}
 
 class Sleep {
   constructor(sleepData) {

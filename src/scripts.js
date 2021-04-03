@@ -1,8 +1,8 @@
-
 // VARIABLES & QUERY SELECTORS 
 const allUsers = new UserRepository(userData);
 const hydration = new Hydration(1, hydrationData);
 const user = new User(userData[0]);
+const sleep = new Sleep(sleepData);
 
 
 const userNameGreeting = document.querySelector('#userGreeting');
@@ -11,6 +11,7 @@ const userInformationSection =
 const friendSection = document.querySelector('#friendsSection');
 const userAveragesSection = document.querySelector('#userAveragesSection');
 const hydrationSection = document.querySelector('#hydrationSection');
+const sleepSection = document.querySelector('#sleepSection');
 
 
 
@@ -21,6 +22,7 @@ const displayAllInfo = () => {
   displayFriends();
   displayAllUserAvgs();
   displayHydrationInfo();
+  displaySleepInfo();
 }
 
 const greetUser = () => {
@@ -40,12 +42,16 @@ const displayUserInformation = () => {
 }
 
 const displayFriends = () => {
-    //need function to convert friends.id to actual friend info
-  friendSection.innerHTML = `${user.friends}`;
+  const markup = user.friends.reduce((acc, friend) => {
+    acc += `<h3>${allUsers.findUserData(friend).name}</h3>`
+    return acc;
+  }, '');
+
+  friendSection.innerHTML = markup;
 }
 
 const displayAllUserAvgs = () => {
-userAveragesSection.innerText = `All User Average:${allUsers.calculateAvgStepGoal()}
+  userAveragesSection.innerText = `All User Average:${allUsers.calculateAvgStepGoal()}
 Your Average: ${user.dailyStepGoal}`;
 }
 
@@ -60,11 +66,38 @@ const displayHydrationInfo = () => {
   const stringifiedWeek = JSON.stringify(latestWeekToDisplay);
 
   hydrationSection.innerHTML = ` 
-  <section class="hydration" id="hydrationSection">
   <i class="fas fa-tint fa-5x"></i>
-  <h3>${hydration.returnOuncesByDate('2019/09/22')} ounces <br> today</h3>
-  </section>`
-  // Weekly Consumption: ${stringifiedWeek}`;
+  <h3>${hydration.returnOuncesByDate('2019/09/22')} ounces <br> today</h3>`
+  // Weekly Consumption: ${stringifiedWeek};
+}
+
+const displaySleepInfo = () => {
+  const dayHoursSlept = sleep.getHoursSleptForUserByDate(user.id, '2019/09/22');
+  const daySleepQuality = sleep.getSleepQualityForUserByDate(user.id, '2019/09/22');
+  const weekHoursSlept = sleep.getDailyAvgSleptByWeekStarting(user.id, '2019/09/22');
+  const weekSleepQuality = sleep.getDailyAvgSleepQualityByWeekStarting(user.id, '2019/09/22');
+  const allSleepQuality = sleep.getAvgAllTimeSleepQualityByUserId(user.id);
+  const allHoursSlept = sleep.getAvgDailySleepByUserId(user.id);
+
+  sleepSection.innerHTML = `
+  <div class="flip-card-inner"> 
+  <div class="flip-card-front">
+    <i class="far fa-moon fa-5x"></i>
+    <h3>${dayHoursSlept.toFixed(1)} hours
+    <br>today</h3>
+  </div>
+  <div class="flip-card-back">
+    <h4>Daily Sleep Data</h4>
+    <p>Sleep Quality: ${daySleepQuality.toFixed(1)}</p>
+    <h4>Weekly Sleep Data</h4>
+    <p>Hours Slept: ${weekHoursSlept.toFixed(1)}</p>
+    <p>Quality of Sleep: ${weekSleepQuality.toFixed(1)}</p>
+    <h4>All Time Average Data</h4>
+    <p>Sleep Quality: ${allSleepQuality.toFixed(1)}</p>
+    <p>Hours Slept: ${allHoursSlept.toFixed(1)}</p>
+  </div>
+</div>`
+
 }
 
 
