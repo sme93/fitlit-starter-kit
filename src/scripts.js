@@ -48,12 +48,12 @@ const displayFriends = () => {
 
 
   console.log(markup);
-    //need function to convert friends.id to actual friend info
+  //need function to convert friends.id to actual friend info
   friendSection.innerHTML = markup;
 }
 
 const displayAllUserAvgs = () => {
-userAveragesSection.innerText = `All User Average:${allUsers.calculateAvgStepGoal()}
+  userAveragesSection.innerText = `All User Average:${allUsers.calculateAvgStepGoal()}
 Your Average: ${user.dailyStepGoal}`;
 }
 
