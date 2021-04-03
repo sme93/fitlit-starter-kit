@@ -47,7 +47,7 @@ describe('Activity', () => {
       }
     ];
 
-    activity = new Activity(activityData, user);
+    activity = new Activity(user, activityData);
   });
 
   it('should be a function', () => {
@@ -69,4 +69,16 @@ describe('Activity', () => {
   it('should have an ID', () => {
     expect(activity.id).to.equal(3);
   });
-});
+
+  it.skip('should calculate miles walked', () => {
+    const milesWalked = activity.calculateMilesWalked(user, '2019/06/15');
+
+    expect(milesWalked).to.equal(6);
+  });
+
+  it.skip('should return minutes a user was active on a given day', () => {
+    const minutesActive = activity.calculateMinutesActive('2019/06/15');
+
+    expect(minutesActive).to.equal(116);
+  });
+})
