@@ -4,9 +4,25 @@ const expect = chai.expect;
 const Activity = require('../src/Activity');
 
 describe('Activity', () => {
-  let activity, activityData;
+  let user;
+  let activityData;
 
   beforeEach(() => {
+    user = {
+      "id": 3,
+      "name": "Herminia Witting",
+      "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
+      "email": "Elwin.Tromp@yahoo.com",
+      "strideLength": 4.4,
+      "dailyStepGoal": 5000,
+      "friends": [
+        19,
+        11,
+        42,
+        33
+      ]
+    };
+
     activityData = [
       {
         "userID": 1,
@@ -31,7 +47,7 @@ describe('Activity', () => {
       }
     ];
 
-    activity = new Activity(activityData);
+    activity = new Activity(activityData, user);
   });
 
   it('should be a function', () => {
@@ -45,4 +61,12 @@ describe('Activity', () => {
   it('should hold activity data', ()=> {
     expect(activity.data).to.equal(activityData);
   });
-})
+
+  it('should take in a user', () => {
+    expect(activity.user).to.deep.equal(user);
+  });
+
+  it('should have an ID', () => {
+    expect(activity.id).to.equal(3);
+  });
+});
