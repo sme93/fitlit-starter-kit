@@ -1,28 +1,31 @@
 * {
   /* border: 1px solid red; */
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 h3 {
   font-size: 25px;
 }
 
+.friends,
 .hydration {
-  background-color: #66EFC5;
+  background-color: #66efc5;
 }
 
+.user-averages,
 .sleep {
-  background-color: #FE91DC;
+  background-color: #fe91dc;
 }
 
 .steps {
-  background-color: #FFC600;
+  background-color: #ffc600;
 }
 
 .minutes-active {
-  background-color: #B7C7FE;
+  background-color: #b7c7fe;
 }
 
+.friends:hover,
 .hydration:hover,
 .sleep:hover,
 .steps:hover,
@@ -35,7 +38,7 @@ h3 {
   flex-wrap: nowrap;
   height: 100vh;
   width: 100vw;
-  }
+}
 
 .user-information-container {
   display: flex;
@@ -52,40 +55,46 @@ h3 {
   display: grid;
   grid-gap: 1.5%;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr); 
+  grid-template-rows: repeat(2, 1fr);
   margin: auto;
+}
+
+.user-information-container,
+.all-user-comparison-container {
+  display: grid;
+  grid-gap: 1.5%;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  min-width: 22vw;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  opacity: 100%;
+  color: white;
+  border-radius: 5%;
+}
+
+.friends {
+  min-height: max-content;
+  min-width: max-content;
 }
 
 .hydration,
 .sleep,
 .steps,
 .minutes-active {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
   height: 45vh;
   width: 25vw;
-  opacity: 100%;
-  color: white;
-  border-radius: 5%;
-  margin: auto;
 }
-
-
-.all-user-comparison-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 20vw;
-}
-
 
 @media screen and (max-width: 375px) {
   .main-container {
     display: flex;
     flex-direction: column;
   }
-
 }
