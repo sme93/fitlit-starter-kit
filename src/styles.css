@@ -16,10 +16,12 @@ h3 {
   background-color: #fe91dc;
 }
 
+.user-information-section,
 .steps {
   background-color: #ffc600;
 }
 
+.greeting-container,
 .minutes-active {
   background-color: #b7c7fe;
 }
@@ -34,20 +36,6 @@ h3 {
 
 .main-container {
   display: flex;
-  flex-wrap: nowrap;
-  height: 100vh;
-  width: 100vw;
-}
-
-.user-information-container {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 20vw;
-}
-
-.greeting-container {
-  text-align: center;
 }
 
 .user-data-display-container {
@@ -56,15 +44,33 @@ h3 {
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   margin: auto;
+  flex: 2;
 }
 
-.user-information-container,
 .all-user-comparison-container {
   display: grid;
   grid-gap: 1.5%;
   grid-template-columns: repeat(1, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  min-width: 22vw;
+  flex: 1;
+  margin-left: 0.5rem;
+}
+
+.user-information-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.greeting-container,
+.user-information-section {
+  margin-top: 0;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.user-information-section {
+  flex: 1;
 }
 
 .card {
@@ -75,12 +81,13 @@ h3 {
   text-align: center;
   opacity: 100%;
   color: white;
-  border-radius: 5%;
+  border-radius: 5px;
 }
 
+.user-information-section,
+.user-averages,
 .friends {
-  min-height: max-content;
-  min-width: max-content;
+  padding: 10px;
 }
 
 .hydration,
@@ -88,7 +95,6 @@ h3 {
 .steps,
 .minutes-active {
   height: 45vh;
-  width: 25vw;
 }
 
 .flip-card {
@@ -115,7 +121,7 @@ h3 {
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
-  border-radius: 5%;
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -145,9 +151,27 @@ h3 {
   margin-bottom: 0.25rem;
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 790px) {
   .main-container {
     display: flex;
     flex-direction: column;
+  }
+
+  .user-data-display-container {
+    margin: unset;
+    margin-bottom: 1rem;
+  }
+
+  .greeting-container,
+  .user-information-section {
+    margin-bottom: 1rem;
+  }
+
+  .card h4 {
+    font-size: 1rem;
+  }
+
+  .card p {
+    font-size: 0.85rem;
   }
 }
