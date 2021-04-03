@@ -31,23 +31,23 @@ const greetUser = () => {
 
 const displayUserInformation = () => {
   const markup = `
-    <section class="user-info-card">
       <p><span>Full Name: </span><span>${user.name}</span></p>
       <p><span>Address: </span><span>${user.address}</span></p>
       <p><span>Email: </span><span>${user.email}</span></p>
       <p><span>Stride Length: </span><span>${user.strideLength}</span></p>
-      <p><span>Daily Step Goal: </span><span>${user.dailyStepGoal}</span></p>
-    </section>`
+      <p><span>Daily Step Goal: </span><span>${user.dailyStepGoal}</span></p>`
   userInformationSection.innerHTML = markup;
 }
 
 const displayFriends = () => {
+  const icon = `<i class="fas fa-users fa-5x"></i>`;
+  const heading = `<h3>Your Friends</h3>`
   const markup = user.friends.reduce((acc, friend) => {
-    acc += `<h3>${allUsers.findUserData(friend).name}</h3>`
+    acc += `<p>${allUsers.findUserData(friend).name}</p>`
     return acc;
   }, '');
 
-  friendSection.innerHTML = markup;
+  friendSection.innerHTML = `${icon} ${heading} ${markup}`;
 }
 
 const displayAllUserAvgs = () => {
