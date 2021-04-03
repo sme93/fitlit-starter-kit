@@ -40,8 +40,16 @@ const displayUserInformation = () => {
 }
 
 const displayFriends = () => {
+  const markup = user.friends.reduce((acc, friend) => {
+    acc += `<h3>${allUsers.findUserData(friend).name}</h3>`
+    return acc;
+  }, '');
+
+
+
+  console.log(markup);
     //need function to convert friends.id to actual friend info
-  friendSection.innerHTML = `${user.friends}`;
+  friendSection.innerHTML = markup;
 }
 
 const displayAllUserAvgs = () => {
@@ -60,11 +68,9 @@ const displayHydrationInfo = () => {
   const stringifiedWeek = JSON.stringify(latestWeekToDisplay);
 
   hydrationSection.innerHTML = ` 
-  <section class="hydration" id="hydrationSection">
   <i class="fas fa-tint fa-5x"></i>
-  <h3>${hydration.returnOuncesByDate('2019/09/22')} ounces <br> today</h3>
-  </section>`
-  // Weekly Consumption: ${stringifiedWeek}`;
+  <h3>${hydration.returnOuncesByDate('2019/09/22')} ounces <br> today</h3>`
+  // Weekly Consumption: ${stringifiedWeek};
 }
 
 
