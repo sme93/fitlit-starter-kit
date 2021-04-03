@@ -72,18 +72,29 @@ const displayHydrationInfo = () => {
 }
 
 const displaySleepInfo = () => {
+  const dayHoursSlept = sleep.getHoursSleptForUserByDate(user.id, '2019/09/22');
+  const daySleepQuality = sleep.getSleepQualityForUserByDate(user.id, '2019/09/22');
+  const weekHoursSlept = sleep.getDailyAvgSleptByWeekStarting(user.id, '2019/09/22');
+  const weekSleepQuality = sleep.getDailyAvgSleepQualityByWeekStarting(user.id, '2019/09/22');
+  const allSleepQuality = sleep.getAvgAllTimeSleepQualityByUserId(user.id);
+  const allHoursSlept = sleep.getAvgDailySleepByUserId(user.id);
+
   sleepSection.innerHTML = `
   <div class="flip-card-inner"> 
   <div class="flip-card-front">
     <i class="far fa-moon fa-5x"></i>
-    <h3>${sleep.getHoursSleptForUserByDate(user.id, '2019/09/22')} hours
+    <h3>${dayHoursSlept.toFixed(1)} hours
     <br>today</h3>
   </div>
   <div class="flip-card-back">
-    <p>Sleep Quality: ${sleep.getSleepQualityForUserByDate(user.id, '2019/09/22')}</p>
+    <h4>Daily Sleep Data</h4>
+    <p>Sleep Quality: ${daySleepQuality.toFixed(1)}</p>
     <h4>Weekly Sleep Data</h4>
-    <p>Hours Slept: ${sleep.getDailyAvgSleptByWeekStarting(user.id, '2019/09/22')}</p>
-    <p>Quality of Sleep: ${sleep.getDailyAvgSleepQualityByWeekStarting(user.id, '2019/09/22')}</p>
+    <p>Hours Slept: ${weekHoursSlept.toFixed(1)}</p>
+    <p>Quality of Sleep: ${weekSleepQuality.toFixed(1)}</p>
+    <h4>All Time Average Data</h4>
+    <p>Sleep Quality: ${allSleepQuality.toFixed(1)}</p>
+    <p>Hours Slept: ${allHoursSlept.toFixed(1)}</p>
   </div>
 </div>`
 

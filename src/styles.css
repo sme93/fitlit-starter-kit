@@ -132,6 +132,19 @@ h3 {
   transform: rotateY(180deg);
 }
 
+.flip-card-back h4 {
+  font-weight: bold;
+  font-size: larger;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  border-bottom: 1px solid white;
+}
+
+.flip-card-back p {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+}
+
 @media screen and (max-width: 375px) {
   .main-container {
     display: flex;
