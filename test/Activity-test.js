@@ -34,11 +34,15 @@ describe('Activity', () => {
     activity = new Activity(activityData);
   });
 
-  it.skip('should be a function', () => {
+  it('should be a function', () => {
     expect(Activity).to.be.a('function');
   });
 
-  it.skip('should be an instance of Activity', () => {
-    expect(activity).to.be.an.instanceOf(Sleep);
+  it('should be an instance of Activity', () => {
+    expect(activity).to.be.an.instanceOf(Activity);
+  });
+
+  it('should hold activity data', ()=> {
+    expect(activity.data).to.equal(activityData);
   });
 })
