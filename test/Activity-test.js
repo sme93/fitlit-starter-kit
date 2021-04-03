@@ -44,7 +44,21 @@ describe('Activity', () => {
         "numSteps": 7402,
         "minutesActive": 116,
         "flightsOfStairs": 33
-      }
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/17",
+        "numSteps": 4000,
+        "minutesActive": 116,
+        "flightsOfStairs": 33
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/18",
+        "numSteps": 8000,
+        "minutesActive": 116,
+        "flightsOfStairs": 33
+      },
     ];
 
     activity = new Activity(user, activityData);
@@ -80,5 +94,24 @@ describe('Activity', () => {
     const minutesActive = activity.calculateMinutesActive(user, '2019/06/15');
 
     expect(minutesActive).to.equal(116);
+  });
+
+  it.skip('should return average minutes active for a given week', () => {
+
+  });
+
+  it('should determine whether a user reached their step goal for a given day', () => {
+    const accomplishedGoal = activity.determineStepsAchieved(user, '2019/06/15');
+
+    expect(accomplishedGoal).to.deep.equal('Congrats! You accomplished your step goal of 5000 steps for today!');
+  });
+
+  it('should find the days where a user exceeded their step goal', () => {
+    const exceededGoal = activity.displayExceededStepGoal(user, activityData);
+
+    expect(exceededGoal).to.deep.equal({
+      '2019/06/15': 7402,
+      '2019/06/18': 8000,
+    })
   });
 })
