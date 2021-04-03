@@ -6,8 +6,6 @@ if (typeof module !== 'undefined') {
   dayjs.extend(isSameOrAfter);
 }
 
-
-
 class Sleep {
   constructor(sleepData) {
     this.sleepData = sleepData;

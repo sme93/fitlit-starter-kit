@@ -80,9 +80,10 @@ const displaySleepInfo = () => {
     <br>today</h3>
   </div>
   <div class="flip-card-back">
-    <i class="far fa-moon fa-5x"></i>
-    <h3>${sleep.getSleepQualityForUserByDate(user.id, '2019/09/22')} 
-    Sleep Quality</h3>
+    <p>Sleep Quality: ${sleep.getSleepQualityForUserByDate(user.id, '2019/09/22')}</p>
+    <h4>Weekly Sleep Data</h4>
+    <p>Hours Slept: ${sleep.getDailyAvgSleptByWeekStarting(user.id, '2019/09/22')}</p>
+    <p>Quality of Sleep: ${sleep.getDailyAvgSleepQualityByWeekStarting(user.id, '2019/09/22')}</p>
   </div>
 </div>`
 

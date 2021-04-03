@@ -46,6 +46,12 @@
       </section>
     </main>
     <script src="../node_modules/dayjs/dayjs.min.js"></script>
+    <script src="../node_modules/dayjs/plugin/isSameOrBefore.js"></script>
+    <script src="../node_modules/dayjs/plugin/isSameOrAfter.js"></script>
+    <script>
+      dayjs.extend(dayjs_plugin_isSameOrAfter);
+      dayjs.extend(dayjs_plugin_isSameOrBefore);
+    </script>
     <script type="text/javascript" src="../data/users.js"></script>
     <script type="text/javascript" src="../data/hydration.js"></script>
     <script type="text/javascript" src="../data/sleep.js"></script>
