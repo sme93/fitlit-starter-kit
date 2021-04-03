@@ -1,13 +1,13 @@
 // VARIABLES & QUERY SELECTORS 
 const allUsers = new UserRepository(userData);
 const hydration = new Hydration(1, hydrationData);
-const user = new User(userData[0]);
 const sleep = new Sleep(sleepData);
+let user;
 
 
 const userNameGreeting = document.querySelector('#userGreeting');
 const userInformationSection = 
-            document.querySelector('#userInformationSection');
+  document.querySelector('#userInformationSection');
 const friendSection = document.querySelector('#friendsSection');
 const userAveragesSection = document.querySelector('#userAveragesSection');
 const hydrationSection = document.querySelector('#hydrationSection');
@@ -16,7 +16,12 @@ const sleepSection = document.querySelector('#sleepSection');
 
 
 //FUNCTIONS 
-const displayAllInfo = () => {
+const displayAllInfo = (event) => {
+  const currentUser = event.target.id // if this is true
+    ? parseInt(event.target.id) - 1 // current user is this
+    : 0; // otherwise
+
+  user = new User(userData[currentUser]);
   greetUser();
   displayUserInformation();
   displayFriends();
@@ -43,7 +48,8 @@ const displayFriends = () => {
   const icon = `<i class="fas fa-users fa-5x"></i>`;
   const heading = `<h3>Your Friends</h3>`
   const markup = user.friends.reduce((acc, friend) => {
-    acc += `<p>${allUsers.findUserData(friend).name}</p>`
+    const currentFriend = allUsers.findUserData(friend);
+    acc += `<p id=${currentFriend.id} >${currentFriend.name}</p>`
     return acc;
   }, '');
 
@@ -100,6 +106,13 @@ const displaySleepInfo = () => {
 
 }
 
+const changeUser = (event) => {
+  if (event.target.nodeName === "P") {
+    displayAllInfo(event);
+  }
+}
+
 
 // EVENT LISTENERS 
 window.addEventListener('load', displayAllInfo);
+friendSection.addEventListener('click', changeUser);
