@@ -70,14 +70,14 @@ describe('Activity', () => {
     expect(activity.id).to.equal(3);
   });
 
-  it.skip('should calculate miles walked', () => {
+  it('should calculate miles walked', () => {
     const milesWalked = activity.calculateMilesWalked(user, '2019/06/15');
 
     expect(milesWalked).to.equal(6);
   });
 
-  it.skip('should return minutes a user was active on a given day', () => {
-    const minutesActive = activity.calculateMinutesActive('2019/06/15');
+  it('should return minutes a user was active on a given day', () => {
+    const minutesActive = activity.calculateMinutesActive(user, '2019/06/15');
 
     expect(minutesActive).to.equal(116);
   });

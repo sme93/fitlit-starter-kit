@@ -5,9 +5,23 @@ class Activity {
     this.data = activityData;
   }
 
+  // __getUserDataById(userID) {
+  //   return this.activityData.filter(dataItem => dataItem.userID === userID);
+  // }
+
+  __getUserDataByDate(user, date) {
+    return this.data.find(dataItem => dataItem.userID === user.id && dataItem.date === date);  
+  }
+
   calculateMilesWalked(user, date) {
-    const dateWalked = this.data.find(data => data.date === date);
-    return (dateWalked.numSteps * user.strideLength) / 5280;
+    const dataByDate = this.__getUserDataByDate(user, date);
+    const milesWalked = Math.floor((dataByDate.numSteps * user.strideLength) / 5280);
+    return milesWalked;
+  }
+
+  calculateMinutesActive(user, date) {
+    const dataByDate = this.__getUserDataByDate(user, date);
+    return dataByDate.minutesActive;
   }
 }
 
