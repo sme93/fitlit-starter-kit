@@ -1,8 +1,8 @@
-
 // VARIABLES & QUERY SELECTORS 
 const allUsers = new UserRepository(userData);
 const hydration = new Hydration(1, hydrationData);
 const user = new User(userData[0]);
+const sleep = new Sleep(sleepData);
 
 
 const userNameGreeting = document.querySelector('#userGreeting');
@@ -11,6 +11,7 @@ const userInformationSection =
 const friendSection = document.querySelector('#friendsSection');
 const userAveragesSection = document.querySelector('#userAveragesSection');
 const hydrationSection = document.querySelector('#hydrationSection');
+const sleepSection = document.querySelector('#sleepSection');
 
 
 
@@ -21,6 +22,7 @@ const displayAllInfo = () => {
   displayFriends();
   displayAllUserAvgs();
   displayHydrationInfo();
+  displaySleepInfo();
 }
 
 const greetUser = () => {
@@ -45,10 +47,6 @@ const displayFriends = () => {
     return acc;
   }, '');
 
-
-
-  console.log(markup);
-  //need function to convert friends.id to actual friend info
   friendSection.innerHTML = markup;
 }
 
@@ -71,6 +69,23 @@ const displayHydrationInfo = () => {
   <i class="fas fa-tint fa-5x"></i>
   <h3>${hydration.returnOuncesByDate('2019/09/22')} ounces <br> today</h3>`
   // Weekly Consumption: ${stringifiedWeek};
+}
+
+const displaySleepInfo = () => {
+  sleepSection.innerHTML = `
+  <div class="flip-card-inner"> 
+  <div class="flip-card-front">
+    <i class="far fa-moon fa-5x"></i>
+    <h3>${sleep.getHoursSleptForUserByDate(user.id, '2019/09/22')} hours
+    <br>today</h3>
+  </div>
+  <div class="flip-card-back">
+    <i class="far fa-moon fa-5x"></i>
+    <h3>${sleep.getSleepQualityForUserByDate(user.id, '2019/09/22')} 
+    Sleep Quality</h3>
+  </div>
+</div>`
+
 }
 
 
