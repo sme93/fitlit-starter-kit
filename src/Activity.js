@@ -43,7 +43,7 @@ class Activity {
     }
   }
 
-  displayExceededStepGoal(user, activityData) {
+  displayExceededStepGoal(user) {
     const userDataByID = this.__getUserDataById(user);
     const datesExceeded = userDataByID.filter(dataItem => dataItem.numSteps > user.dailyStepGoal);
     const reducedDatesExceeded = datesExceeded.reduce((dateObj, dataItem) => {
@@ -53,7 +53,7 @@ class Activity {
     return reducedDatesExceeded;
   }
 
-  findStairRecord(user, data) {
+  findStairRecord(user) {
     const userDataByID = this.__getUserDataById(user);
     const sortByStairs = userDataByID.sort((a, b) => {
       return b.flightsOfStairs - a.flightsOfStairs;
