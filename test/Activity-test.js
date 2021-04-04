@@ -47,17 +47,45 @@ describe('Activity', () => {
       },
       {
         "userID": 3,
-        "date": "2019/06/17",
+        "date": "2019/06/16",
         "numSteps": 4000,
         "minutesActive": 116,
-        "flightsOfStairs": 33
+        "flightsOfStairs": 10
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/17",
+        "numSteps": 2000,
+        "minutesActive": 116,
+        "flightsOfStairs": 45
       },
       {
         "userID": 3,
         "date": "2019/06/18",
         "numSteps": 8000,
-        "minutesActive": 116,
-        "flightsOfStairs": 33
+        "minutesActive": 150,
+        "flightsOfStairs": 60
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/19",
+        "numSteps": 4000,
+        "minutesActive": 30,
+        "flightsOfStairs": 37
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/20",
+        "numSteps": 1000,
+        "minutesActive": 300,
+        "flightsOfStairs": 15
+      },
+      {
+        "userID": 3,
+        "date": "2019/06/21",
+        "numSteps": 3000,
+        "minutesActive": 45,
+        "flightsOfStairs": 26
       },
     ];
 
@@ -96,8 +124,10 @@ describe('Activity', () => {
     expect(minutesActive).to.equal(116);
   });
 
-  it.skip('should return average minutes active for a given week', () => {
+  it('should return average minutes active for a given week', () => {
+    const weeklyAvg = activity.calculateAvgMinutesActiveForWeek(user, '2019/06/15');
 
+    expect(weeklyAvg).to.equal(124);
   });
 
   it('should determine whether a user reached their step goal for a given day', () => {
@@ -113,5 +143,29 @@ describe('Activity', () => {
       '2019/06/15': 7402,
       '2019/06/18': 8000,
     })
+  });
+
+  it('should find a user\'s all time stair climbing record', () => {
+    const stairRecord = activity.findStairRecord(user, activityData);
+
+    expect(stairRecord).to.equal(60);
+  });
+
+  it('should find the average stairs climbed for all users, for a given day', () => {
+    const averageStairs = activity.calculateAllUserStairAvg('2019/06/15');
+
+    expect(averageStairs).to.equal(19);
+  });
+
+  it('should find the average steps taken for all users, for a given day', () => {
+    const averageSteps = activity.calculateAllUserStepAvg('2019/06/15');
+
+    expect(averageSteps).to.equal(5091);
+  });
+
+  it('should calculate average minutes active for all users, for a given day', () => {
+    const averageActivity = activity.calculateAllUserActivityAvg('2019/06/15');
+
+    expect(averageActivity).to.equal(131);
   });
 })
