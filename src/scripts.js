@@ -2,9 +2,10 @@
 
 // VARIABLES & QUERY SELECTORS 
 const allUsers = new UserRepository(userData);
-const hydration = new Hydration(1, hydrationData);
 const sleep = new Sleep(sleepData);
 let user;
+let activity;
+let hydration;
 
 
 
@@ -28,6 +29,8 @@ const displayAllInfo = (event) => {
     : 0; // otherwise
 
   user = new User(userData[currentUser]);
+  activity = new Activity(userData[currentUser], activityData);
+  hydration = new Hydration(userData[currentUser].id, hydrationData);
   greetUser();
   displayUserInformation();
   displayFriends();
@@ -46,8 +49,6 @@ const greetUser = () => {
 const displayUserInformation = () => {
   const markup = `
       <p><span>Full Name: </span><span>${user.name}</span></p>
-      <p><span>Address: </span><span>${user.address}</span></p>
-      <p><span>Email: </span><span>${user.email}</span></p>
       <p><span>Stride Length: </span><span>${user.strideLength}</span></p>
       <p><span>Daily Step Goal: </span><span>${user.dailyStepGoal}</span></p>`
   userInformationSection.innerHTML = markup;
@@ -58,7 +59,7 @@ const displayFriends = () => {
   const heading = `<h3>Your Friends</h3>`
   const markup = user.friends.reduce((acc, friend) => {
     const currentFriend = allUsers.findUserData(friend);
-    acc += `<p id=${currentFriend.id} >${currentFriend.name}</p>`
+    acc += `<p id=${currentFriend.id} > ${currentFriend.name}</p>`
     return acc;
   }, '');
 
@@ -70,20 +71,23 @@ const displayAllUserAvgs = () => {
 Your Average: ${user.dailyStepGoal}`;
 }
 
-
-//For this function, I'm planning on just reducing it to display the info we want back in the hydration file. For that commented out code on line 67, I figured we could have that information display once we click on the hydration widget, and toggle to a different page or something! Definitely a work in progress, feel free to make changes as you see fit! 
 const displayHydrationInfo = () => {
   const latestWeek = hydration.findDailyFluidIntakeForWeek('2019/09/16');
-  const latestWeekToDisplay = latestWeek.reduce((acc, {numOunces, date}) => {
-    acc[date] = numOunces;
-    return acc;
-  }, {});
-  const stringifiedWeek = JSON.stringify(latestWeekToDisplay);
 
   hydrationSection.innerHTML = ` 
-  <i class="fas fa-tint fa-5x"></i>
-  <h3>${hydration.returnOuncesByDate('2019/09/22')} ounces <br> today</h3>`
-  // Weekly Consumption: ${stringifiedWeek};
+  <div class="flip-card-inner">
+  <div class="flip-card-front-hydration">
+    <i class="fas fa-tint fa-5x"></i>
+    <h3>${hydration.returnOuncesByDate('2019/09/22')} ounces 
+    <br> today</h3>
+  </div>
+  <div class="flip-card-back">
+    <h4>Weekly Hydration Data</h4>
+    <div>Ounces Drank: ${latestWeek.map(day => {
+    return `<p>${day.date}: ${day.numOunces}</p>`;
+  }).join("")}</div>
+  </div>
+</div>`
 }
 
 const displaySleepInfo = () => {
@@ -96,7 +100,7 @@ const displaySleepInfo = () => {
 
   sleepSection.innerHTML = `
   <div class="flip-card-inner"> 
-  <div class="flip-card-front">
+  <div class="flip-card-front-sleep">
     <i class="far fa-moon fa-5x"></i>
     <h3>${dayHoursSlept.toFixed(1)} hours
     <br>today</h3>
@@ -112,7 +116,6 @@ const displaySleepInfo = () => {
     <p>Hours Slept: ${allHoursSlept.toFixed(1)}</p>
   </div>
 </div>`
-
 }
 
 const changeUser = (event) => {
@@ -120,8 +123,6 @@ const changeUser = (event) => {
     displayAllInfo(event);
   }
 }
-let user1 = new User(userData[0])
-const activity = new Activity(user1, activityData)
 
 const displayActivityInfo = () => {
   const minActiveToday = activity.calculateMinutesActive(user, '2019/09/22');
@@ -130,23 +131,45 @@ const displayActivityInfo = () => {
   <div class="flip-card-inner"> 
   <div class="flip-card-front-activity">
     <i class="fas fa-chart-line fa-5x"></i>
-    <h3>${minActiveToday} minutes<br>
-    active today</h3>
+    <h3>${minActiveToday} minutes
+    <br>active today</h3>
   </div>
+  <div class="flip-card-back">
+    <h4>Daily Activity Data</h4>
+    <p></p>
+    <h4>Weekly Activity Data</h4>
+    <p>Hours Slept: </p>
+    <p>Quality of Sleep: </p>
+    <h4>All Time Average Data</h4>
+    <p>Sleep Quality:</p>
+    <p>Hours Slept: </p>
+  </div>
+</div>
 `
 }
 
 const displayStepInfo = () => {
-  const userActivityData = activity.__getUserDataByDate(user1, '2019/09/22');
+  const userActivityData = activity.__getUserDataByDate(user, '2019/09/22');
   const stepsToday = userActivityData.numSteps;
   
   stepsSection.innerHTML = `
   <div class="flip-card-inner"> 
   <div class="flip-card-front-steps">
     <i class="fas fa-walking fa-5x"></i>
-    <h3>${stepsToday} steps<br>
-    today</h3>
+    <h3>${stepsToday} steps
+    <br>today</h3>
   </div>
+  <div class="flip-card-back">
+    <h4>Daily Steps Data</h4>
+    <p></p>
+    <h4>Weekly Steps Data</h4>
+    <p>Hours Slept: </p>
+    <p>Quality of Sleep: </p>
+    <h4>All Time Average Data</h4>
+    <p>Sleep Quality:</p>
+    <p>Hours Slept: </p>
+  </div>
+</div>
   `
 }
 
