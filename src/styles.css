@@ -3,74 +3,33 @@
   font-family: "Roboto", sans-serif;
 }
 
-h3 {
+h1 {
   font-size: 25px;
 }
 
-.friends,
-.hydration {
-  background-color: #66efc5;
+h3 {
+  font-size: 20px;
 }
 
-.user-averages {
-  background-color: #fe91dc;
+body {
+  /* background-color: #E7F5FC; */
+  background-color: #E7EBF7;
 }
 
-.user-information-section,
-.steps {
-  background-color: #ffc600;
-}
-
-.greeting-container,
-.minutes-active {
-  background-color: #b7c7fe;
-}
-
-.friends:hover,
-.hydration:hover,
-.sleep:hover,
-.steps:hover,
-.minutes-active:hover {
-  opacity: 60%;
+.page-title {
+  font-size: 40px;
+  letter-spacing: 2px;
+  height: .025vh;
+  width: .025vw;
+  align-self: flex-start;
+  justify-self: center;
+  margin-top: 2%;
+  margin-bottom: 0;
+  margin-left: 45%;
 }
 
 .main-container {
   display: flex;
-}
-
-.user-data-display-container {
-  display: grid;
-  grid-gap: 1.5%;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  margin: auto;
-  flex: 2;
-}
-
-.all-user-comparison-container {
-  display: grid;
-  grid-gap: 1.5%;
-  grid-template-columns: repeat(1, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  flex: 1;
-  margin-left: 0.5rem;
-}
-
-.user-information-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.greeting-container,
-.user-information-section {
-  margin-top: 0;
-  margin-right: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.user-information-section {
-  flex: 1;
 }
 
 .card {
@@ -79,23 +38,105 @@ h3 {
   justify-content: center;
   align-items: center;
   text-align: center;
-  opacity: 100%;
+  opacity: 80%;
   color: white;
   border-radius: 5px;
 }
 
+/* ~~~~~GREETING / USER INFO~~~~~ */
+.greeting-container {
+  display: flex;
+  height: 13.5vh;
+  margin-top: 1rem;
+  margin-right: 3rem;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%)
+}
+
 .user-information-section,
+.greeting-container,
 .user-averages,
 .friends {
-  padding: 10px;
+  color: black;
+  background-color: white;
+}
+
+.user-information-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-information-section {
+  flex: 1;
+  margin-top: 0;
+  margin-right: 3rem;
+  margin-left: 3rem;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%)
+}
+
+/* ~~~~~WIDGET INFO~~~~~ */
+
+.dashboard {
+  font-size: 13px;
+  color: #9C9DB9;
+  letter-spacing: 5px;
+  height: .25vh;
+  width: .25vh;
+  margin-top: 9%;
+  justify-self: flex-start;
+  align-self: flex-start;
+}
+.user-data-display-container {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  flex: 2;
+  margin-right: 3rem;
+  margin-top: 11%;
+  margin-bottom: 2rem;
+}
+
+.title {
+  align-self: flex-start;
+  justify-self: flex-start;
+  margin-left: 2rem;
+  margin-bottom: 4rem;
+  font-size: 20px;
+}
+
+.ounces,
+.hours,
+.feet,
+.minutes {
+  margin-bottom: 4rem;
+}
+
+.hydration {
+  display: flex;
+  background-color: #66efc5;
+}
+
+.steps {
+  background-color: #ffc600;
+}
+
+.minutes-active {
+  background-color: #b7c7fe;
 }
 
 .hydration,
 .sleep,
 .steps,
 .minutes-active {
-  height: 45vh;
+  height: 40vh;
 }
+
+/*~~~~~FLIP CARD~~~~~*/
 
 .flip-card {
   perspective: 1000px;
@@ -159,6 +200,33 @@ h3 {
 .flip-card-back p {
   margin-top: 0;
   margin-bottom: 0.25rem;
+}
+
+/*~~~~FRIENDS AND ALL USER AVGS~~~~ */
+
+.all-user-comparison-container {
+  display: grid;
+  grid-gap: 2rem;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  flex: 1;
+  margin-top: 1rem;
+  margin-right: 3rem;
+}
+
+.user-averages {
+  margin-bottom: 2rem;
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%)
+}
+
+.friends {
+  box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%)
+}
+
+.user-information-section,
+.user-averages,
+.friends {
+  padding: 10px;
 }
 
 @media screen and (max-width: 790px) {
