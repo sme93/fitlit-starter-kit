@@ -18,7 +18,7 @@ Users will see a daily overview for each category, displayed in their dashboard.
 #### Backs of Widgets for More Information 
 ~more GIFs~ 
 
-## Setup
+### Setup
 
 1. `Fork` this repository.
 2. `clone` down to your local machine.
