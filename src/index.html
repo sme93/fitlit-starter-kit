@@ -7,11 +7,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/eae4585e69.js" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" type="text/css" href="./styles.css">
     <title>Activity Tracker</title>
   </head>
   <body>
+    <h1 class="page-title">FitLit</h1>
     <main class="main-container">
       <section class="user-information-container">
         <section class="greeting-container card">
@@ -22,25 +22,19 @@
           <h3>more user information</h3>
         </section>
       </section>
+      <h2 class="dashboard">DASHBOARD</h2>
       <section class="user-data-display-container">
         <section class="card hydration" id="hydrationSection">
-          <h3></h3>
-          <i class="fas fa-tint fa-5x"></i>
         </section>
         <section class="card sleep flip-card" id="sleepSection">
         </section>
-        <section class="card steps">
-          <i class="fas fa-walking fa-5x"></i>
-          <h3>steps today!</h3>
+        <section class="card steps" id="stepsSection">
         </section>
-        <section class="card minutes-active">
-          <i class="fas fa-chart-line fa-5x"></i>
-          <h3>activity today!</h3>
+        <section class="card minutes-active flip-card" id="activitySection">
         </section>
       </section>
       <section class="all-user-comparison-container">
         <section class="card friends" id="friendsSection">
-          <h3>friends data</h3>
         </section>
         <section class="card user-averages" id="userAveragesSection">
           <h3>all users data</h3>
@@ -62,6 +56,6 @@
     <script type="text/javascript" src="./UserRepository.js"></script>
     <script type="text/javascript" src="./Hydration.js"></script>
     <script type ="text/javascript" src="./Sleep.js"></script>
-    <script type="text/javascript" src="./scripts.js"></script>
+    <script type="text/javascript" src="./Activity.js"></script>    <script type="text/javascript" src="./scripts.js"></script>
   </body>
 </html>

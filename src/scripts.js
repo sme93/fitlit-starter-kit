@@ -1,8 +1,12 @@
+
+
 // VARIABLES & QUERY SELECTORS 
 const allUsers = new UserRepository(userData);
 const hydration = new Hydration(1, hydrationData);
 const sleep = new Sleep(sleepData);
 let user;
+
+
 
 
 const userNameGreeting = document.querySelector('#userGreeting');
@@ -12,6 +16,8 @@ const friendSection = document.querySelector('#friendsSection');
 const userAveragesSection = document.querySelector('#userAveragesSection');
 const hydrationSection = document.querySelector('#hydrationSection');
 const sleepSection = document.querySelector('#sleepSection');
+const activitySection = document.querySelector('#activitySection');
+const stepsSection = document.querySelector('#stepsSection');
 
 
 
@@ -28,7 +34,10 @@ const displayAllInfo = (event) => {
   displayAllUserAvgs();
   displayHydrationInfo();
   displaySleepInfo();
+  displayActivityInfo();
+  displayStepInfo();
 }
+
 
 const greetUser = () => {
   userNameGreeting.innerHTML = `Hi, ${user.getFirstName()}!`;
@@ -110,6 +119,35 @@ const changeUser = (event) => {
   if (event.target.nodeName === "P") {
     displayAllInfo(event);
   }
+}
+let user1 = new User(userData[0])
+const activity = new Activity(user1, activityData)
+
+const displayActivityInfo = () => {
+  const minActiveToday = activity.calculateMinutesActive(user, '2019/09/22');
+  
+  activitySection.innerHTML = `
+  <div class="flip-card-inner"> 
+  <div class="flip-card-front-activity">
+    <i class="fas fa-chart-line fa-5x"></i>
+    <h3>${minActiveToday} minutes<br>
+    active today</h3>
+  </div>
+`
+}
+
+const displayStepInfo = () => {
+  const userActivityData = activity.__getUserDataByDate(user1, '2019/09/22');
+  const stepsToday = userActivityData.numSteps;
+  
+  stepsSection.innerHTML = `
+  <div class="flip-card-inner"> 
+  <div class="flip-card-front-steps">
+    <i class="fas fa-walking fa-5x"></i>
+    <h3>${stepsToday} steps<br>
+    today</h3>
+  </div>
+  `
 }
 
 
