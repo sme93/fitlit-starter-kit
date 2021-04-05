@@ -1,82 +1,54 @@
-# FitLit Starter Kit
+## FitLit Health Tracker
 
-The details of this project are outline in [this project spec](http://frontend.turing.io/projects/fitlit.html).
+A paired project by [Sarah Fitzsimons](https://github.com/sme93) and [Michann Stoner](https://github.com/michannstoner).
+Original project spec can be found [here](http://frontend.turing.io/projects/fitlit.html).
+
+### Description 
+
+FitLit is the beginning of a fitness/health tracking application. It is intended to help users track their:
+- Activity
+- Hydration 
+- Sleep
+- Steps
+
+Users will see a daily overview for each category, displayed in their dashboard. Users are also able to see more detailed information and averages for a specific week, or see how their data compares to their friends and all other users (friendly competition only!). 
+
+### Main View & Dashboard Display
+~GIF here~ 
+#### Backs of Widgets for More Information 
+~more GIFs~ 
 
 ## Setup
 
-1. Within your group, decide on one person to have the project repository (repo) on their GitHub account. Then, that person should fork this repo - on the top right corner of this page, click the **Fork** button.
-1. Both memebers of the group should clone down the _forked_ repo. Since you don't want to name your project "activity-tracker-starter", you can use an optional argument when you run git clone (you replace the [...] with the terminal command arguments): `git clone [remote-address] [what you want to name the repo]`
-1. Once you have cloned the repo, change into the directory and install the project dependencies. Run `npm install` to install project dependencies.
-1. Run `open src/index.html` in the terminal to see the HTML page (you should see some boilerplate HTML displayed on the page)
-1. Make sure both members of your team are collaborators on the forked repo.
+1. `Fork` this repository.
+2. `clone` down to your local machine.
+3. `cd` into repository.
+4. Run `open src/index.html` in your command line.
 
-## Testing
+**OR**
 
-There is no boilerplate for testing in this starter-kit repo. You will need to set this up yourself. However, if you ran `npm install`, then the tooling you need to start testing is already installed (`mocha` and `chai`).
+[Click here](deployed link here) to view the deployed site. 
 
-## Linting Your Code
+### Technologies 
+- JavaScript
+- HTML
+- CSS
+- [Day.js](https://www.npmjs.com/package/dayjs)
+- Mocha & Chai
 
-Run the command in your terminal `npm run lint` to run the linter on your JavaScript code. There will be errors and warnings right from the start in this starter kit, but that's ok - the linter is still running successfully.
+### Project Wins & Challenges
 
-Your linter will look only at the JavaScript files you have within the `src` and the `test` directories.
+#### Wins
+Share your wins! 
 
-## Data Model
+#### Challenges
+Share your challenges! 
 
-**Users**
+### Future Project Iterations 
+- Implement additional packages such as [Chart.js](https://www.npmjs.com/package/chart.js) to display information on the back of widget cards. 
+- More consistency in our use of packages - using `Day.js` throughout all classes. 
+- Display more detailed information on friends - creating (healthy) competitions or displaying other relevant information. 
 
-```
-[
-  {
-    "id": [number],
-    "name": [string],
-    "address": [string],
-    "email": [string],
-    "strideLength": [number - feet],
-    "dailyStepGoal": [number - steps],
-    "friends": [array - one-way connection to other user(s)]
-  },
-  ...more user data
-]
-```
+ 
 
-**Activity**
 
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numSteps": [number - steps],
-    "minutesActive": [number - minutes],
-    "flightsOfStairs": [number - flights]
-  },
-  ...more activity data
-]
-```
-
-**Hydration**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "numOunces": [number - ounces]
-  },
-  ...more hydration data
-]
-```
-
-**Sleep**
-
-```
-[
-  {
-    "userID": [number],
-    "date": [string YYYY/MM/DD],
-    "hoursSlept": [number - hours],
-    "sleepQuality": [number - unitless]
-  },
-  ...more sleep data
-]
-```
