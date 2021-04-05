@@ -115,6 +115,8 @@ h3 {
 }
 
 .flip-card-front,
+.flip-card-front-activity,
+.flip-card-front-steps,
 .flip-card-back {
   position: absolute;
   width: 100%;
@@ -130,6 +132,14 @@ h3 {
 
 .flip-card-front {
   background-color: #fe91dc;
+}
+
+.flip-card-front-activity {
+  background-color: #b7c7fe;
+}
+
+.flip-card-front-steps {
+  background: #ffc600;
 }
 
 .flip-card-back {
