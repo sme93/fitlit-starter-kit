@@ -99,9 +99,10 @@ const displayHydrationInfo = () => {
   hydrationSection.innerHTML = ` 
   <div class="flip-card-inner">
   <div class="flip-card-front-hydration">
+    <p class="ounces">HYDRATION</p>
     <i class="fas fa-tint fa-5x"></i>
-    <h3>${hydration.returnOuncesByDate('2019/09/20')} ounces of
-    <br>water today</h3>
+    <h3>${hydration.returnOuncesByDate('2019/09/20')} ounces
+    <br>today</h3>
   </div>
   <div class="flip-card-back">
     <h4>Weekly Hydration Data</h4>
@@ -123,9 +124,10 @@ const displaySleepInfo = () => {
   sleepSection.innerHTML = `
   <div class="flip-card-inner"> 
   <div class="flip-card-front-sleep">
+    <p class="hours">SLEEP</p>
     <i class="far fa-moon fa-5x"></i>
-    <h3>${dayHoursSlept.toFixed(1)} hours of 
-    <br>sleep today</h3>
+    <h3>${dayHoursSlept.toFixed(1)} hours
+    <br>today</h3>
   </div>
   <div class="flip-card-back">
     <h4>Daily Sleep Data</h4>
@@ -153,9 +155,10 @@ const displayActivityInfo = () => {
   activitySection.innerHTML = `
   <div class="flip-card-inner"> 
   <div class="flip-card-front-activity">
+    <p class="feet">STEPS</p>
     <i class="fas fa-chart-line fa-5x"></i>
     <h3>${minActiveToday} minutes
-    <br>active today</h3>
+    <br>today</h3>
   </div>
   <div class="flip-card-back">
     <h4>Weekly Activity Data</h4>
@@ -178,6 +181,7 @@ const displayStepInfo = () => {
   stepsSection.innerHTML = `
   <div class="flip-card-inner"> 
   <div class="flip-card-front-steps">
+    <p class="minutes">ACTIVITY</p>
     <i class="fas fa-walking fa-5x"></i>
     <h3>${stepsToday} steps
     <br>today</h3>

@@ -8,7 +8,7 @@ h1 {
 }
 
 h3 {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 body {
@@ -101,19 +101,19 @@ body {
   margin-bottom: 2rem;
 }
 
-.title {
-  align-self: flex-start;
-  justify-self: flex-start;
-  margin-left: 2rem;
-  margin-bottom: 4rem;
-  font-size: 20px;
-}
-
 .ounces,
 .hours,
 .feet,
 .minutes {
+  font-size: 20px;
   margin-bottom: 4rem;
+  margin-left: 1rem;
+  align-self: flex-start;
+}
+
+.fas,
+.far {
+  margin-bottom: 2rem;
 }
 
 .hydration,
