@@ -93,5 +93,5 @@ class Activity {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = Sleep;
+  module.exports = Activity;
 }
