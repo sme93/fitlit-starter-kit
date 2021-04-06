@@ -67,8 +67,17 @@ const displayFriends = () => {
 }
 
 const displayAllUserAvgs = () => {
-  userAveragesSection.innerText = `All User Average:${allUsers.calculateAvgStepGoal()}
-Your Average: ${user.dailyStepGoal}`;
+  const icon = `<i class="fas fa-running fa-5x"></i>`;
+  const heading = `<h3>All User Comparisons</h3>`;
+  const markup = `
+  <div>
+    <p>Average Step Goal:${allUsers.calculateAvgStepGoal()}</p>
+    <p>Number of Steps Today: ${activity.calculateAllUserStepAvg('2019/09/16')}</p>
+    <p>Minutes Active Today: ${activity.calculateAllUserActivityAvg('2019/09/16')}</p>
+    <p>Flights of Stairs Climbed Today: ${activity.calculateAllUserStairAvg('2019/09/16')}</p>
+  </div>`
+
+userAveragesSection.innerHTML = `${heading} ${markup} ${icon}`;
 }
 
 const displayHydrationInfo = () => {
@@ -78,8 +87,8 @@ const displayHydrationInfo = () => {
   <div class="flip-card-inner">
   <div class="flip-card-front-hydration">
     <i class="fas fa-tint fa-5x"></i>
-    <h3>${hydration.returnOuncesByDate('2019/09/22')} ounces 
-    <br> today</h3>
+    <h3>${hydration.returnOuncesByDate('2019/09/22')} ounces of
+    <br>water today</h3>
   </div>
   <div class="flip-card-back">
     <h4>Weekly Hydration Data</h4>
@@ -102,8 +111,8 @@ const displaySleepInfo = () => {
   <div class="flip-card-inner"> 
   <div class="flip-card-front-sleep">
     <i class="far fa-moon fa-5x"></i>
-    <h3>${dayHoursSlept.toFixed(1)} hours
-    <br>today</h3>
+    <h3>${dayHoursSlept.toFixed(1)} hours of 
+    <br>sleep today</h3>
   </div>
   <div class="flip-card-back">
     <h4>Daily Sleep Data</h4>
@@ -151,6 +160,9 @@ const displayActivityInfo = () => {
 const displayStepInfo = () => {
   const userActivityData = activity.__getUserDataByDate(user, '2019/09/22');
   const stepsToday = userActivityData.numSteps;
+  const distanceInMiles = activity.calculateMilesWalked(user, '2019/09/22');
+  //const weeklyNumberOfSteps =
+  //const weeklyFlightsOfStairs = 
   
   stepsSection.innerHTML = `
   <div class="flip-card-inner"> 
@@ -160,14 +172,11 @@ const displayStepInfo = () => {
     <br>today</h3>
   </div>
   <div class="flip-card-back">
-    <h4>Daily Steps Data</h4>
-    <p></p>
+    <h4>Miles Walked Today</h4>
+    <p>${distanceInMiles}</p>
     <h4>Weekly Steps Data</h4>
-    <p>Hours Slept: </p>
-    <p>Quality of Sleep: </p>
-    <h4>All Time Average Data</h4>
-    <p>Sleep Quality:</p>
-    <p>Hours Slept: </p>
+    <p>Number of Steps: </p>
+    <p>Flights of Stairs: </p>
   </div>
 </div>
   `
