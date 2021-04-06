@@ -12,9 +12,9 @@ let hydration;
 
 const userNameGreeting = document.querySelector('#userGreeting');
 const userInformationSection = 
-  document.querySelector('#userInformationSection');
+  document.querySelector('#userAveragesSection');
 const friendSection = document.querySelector('#friendsSection');
-const userAveragesSection = document.querySelector('#userAveragesSection');
+const userAveragesSection = document.querySelector('#userInformationSection');
 const hydrationSection = document.querySelector('#hydrationSection');
 const sleepSection = document.querySelector('#sleepSection');
 const activitySection = document.querySelector('#activitySection');
@@ -47,11 +47,14 @@ const greetUser = () => {
 }
 
 const displayUserInformation = () => {
+  const icon = `<i class="far fa-address-card fa-5x"></i>`;
+  const heading = `<h3>Your Information</h3>`;
   const markup = `
       <p><span>Full Name: </span><span>${user.name}</span></p>
       <p><span>Stride Length: </span><span>${user.strideLength}</span></p>
       <p><span>Daily Step Goal: </span><span>${user.dailyStepGoal}</span></p>`
-  userInformationSection.innerHTML = markup;
+  
+  userInformationSection.innerHTML = `${icon} ${heading} ${markup}`;
 }
 
 const displayFriends = () => {
@@ -67,17 +70,27 @@ const displayFriends = () => {
 }
 
 const displayAllUserAvgs = () => {
+  const userActivityData = activity.__getUserDataByDate(user, '2019/09/22');
+  const stepsToday = userActivityData.numSteps;
   const icon = `<i class="fas fa-running fa-5x"></i>`;
   const heading = `<h3>All User Comparisons</h3>`;
   const markup = `
   <div>
-    <p>Average Step Goal:${allUsers.calculateAvgStepGoal()}</p>
-    <p>Number of Steps Today: ${activity.calculateAllUserStepAvg('2019/09/16')}</p>
-    <p>Minutes Active Today: ${activity.calculateAllUserActivityAvg('2019/09/16')}</p>
-    <p>Flights of Stairs Climbed Today: ${activity.calculateAllUserStairAvg('2019/09/16')}</p>
+    <p>Your Average Step Goal: ${user.dailyStepGoal} 
+    <br>vs.
+    <br>All User's Average Step Goal:${allUsers.calculateAvgStepGoal()}</p>
+    <p>Your Number of Steps: ${stepsToday}
+    <br>vs.
+    <br>All User's Number of Steps Today: ${activity.calculateAllUserStepAvg('2019/09/16')}</p>
+    <p>Your Minutes Active: ${activity.calculateMinutesActive(user, '2019/09/22')}
+    <br>vs.
+    <br>All User's Minutes Active Today: ${activity.calculateAllUserActivityAvg('2019/09/16')}</p>
+    <p>Your Flights of Stairs Climbed: ${activity.data[user.id].flightsOfStairs}
+    <br>vs.
+    <br>All User's Flights of Stairs Climbed Today: ${activity.calculateAllUserStairAvg('2019/09/16')}</p>
   </div>`
 
-userAveragesSection.innerHTML = `${heading} ${markup} ${icon}`;
+  userAveragesSection.innerHTML = `${heading} ${markup} ${icon}`;
 }
 
 const displayHydrationInfo = () => {

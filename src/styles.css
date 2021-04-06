@@ -116,19 +116,6 @@ body {
   margin-bottom: 4rem;
 }
 
-.hydration {
-  display: flex;
-  background-color: #66efc5;
-}
-
-.steps {
-  background-color: #ffc600;
-}
-
-.minutes-active {
-  background-color: #b7c7fe;
-}
-
 .hydration,
 .sleep,
 .steps,
