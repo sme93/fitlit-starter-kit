@@ -38,6 +38,8 @@ class Activity {
 
   determineStepsAchieved(user, date) {
     const dataByDate = this.__getUserDataByDate(user, date);
+ console.log("dataByDate ", dataByDate);
+ console.log(user);
     if (dataByDate.numSteps >= user.dailyStepGoal) {
       return `Congrats! You accomplished your step goal of ${user.dailyStepGoal} steps for today!`
     }
@@ -93,5 +95,5 @@ class Activity {
 }
 
 if (typeof module !== 'undefined') {
-  module.exports = Sleep;
+  module.exports = Activity;
 }

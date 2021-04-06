@@ -70,7 +70,7 @@ const displayFriends = () => {
 }
 
 const displayAllUserAvgs = () => {
-  const userActivityData = activity.__getUserDataByDate(user, '2019/09/22');
+  const userActivityData = activity.__getUserDataByDate(user, '2019/09/20');
   const stepsToday = userActivityData.numSteps;
   const icon = `<i class="fas fa-running fa-5x"></i>`;
   const heading = `<h3>All User Comparisons</h3>`;
@@ -81,13 +81,13 @@ const displayAllUserAvgs = () => {
     <br>All User's Average Step Goal:${allUsers.calculateAvgStepGoal()}</p>
     <p>Your Number of Steps: ${stepsToday}
     <br>vs.
-    <br>All User's Number of Steps Today: ${activity.calculateAllUserStepAvg('2019/09/16')}</p>
+    <br>All User's Number of Steps Today: ${activity.calculateAllUserStepAvg('2019/09/20')}</p>
     <p>Your Minutes Active: ${activity.calculateMinutesActive(user, '2019/09/22')}
     <br>vs.
-    <br>All User's Minutes Active Today: ${activity.calculateAllUserActivityAvg('2019/09/16')}</p>
+    <br>All User's Minutes Active Today: ${activity.calculateAllUserActivityAvg('2019/09/20')}</p>
     <p>Your Flights of Stairs Climbed: ${activity.data[user.id].flightsOfStairs}
     <br>vs.
-    <br>All User's Flights of Stairs Climbed Today: ${activity.calculateAllUserStairAvg('2019/09/16')}</p>
+    <br>All User's Flights of Stairs Climbed Today: ${activity.calculateAllUserStairAvg('2019/09/20')}</p>
   </div>`
 
   userAveragesSection.innerHTML = `${heading} ${markup} ${icon}`;
@@ -100,7 +100,7 @@ const displayHydrationInfo = () => {
   <div class="flip-card-inner">
   <div class="flip-card-front-hydration">
     <i class="fas fa-tint fa-5x"></i>
-    <h3>${hydration.returnOuncesByDate('2019/09/22')} ounces of
+    <h3>${hydration.returnOuncesByDate('2019/09/20')} ounces of
     <br>water today</h3>
   </div>
   <div class="flip-card-back">
@@ -113,10 +113,10 @@ const displayHydrationInfo = () => {
 }
 
 const displaySleepInfo = () => {
-  const dayHoursSlept = sleep.getHoursSleptForUserByDate(user.id, '2019/09/22');
-  const daySleepQuality = sleep.getSleepQualityForUserByDate(user.id, '2019/09/22');
-  const weekHoursSlept = sleep.getDailyAvgSleptByWeekStarting(user.id, '2019/09/22');
-  const weekSleepQuality = sleep.getDailyAvgSleepQualityByWeekStarting(user.id, '2019/09/22');
+  const dayHoursSlept = sleep.getHoursSleptForUserByDate(user.id, '2019/09/20');
+  const daySleepQuality = sleep.getSleepQualityForUserByDate(user.id, '2019/09/20');
+  const weekHoursSlept = sleep.getDailyAvgSleptByWeekStarting(user.id, '2019/09/16');
+  const weekSleepQuality = sleep.getDailyAvgSleepQualityByWeekStarting(user.id, '2019/09/16');
   const allSleepQuality = sleep.getAvgAllTimeSleepQualityByUserId(user.id);
   const allHoursSlept = sleep.getAvgDailySleepByUserId(user.id);
 
@@ -147,7 +147,8 @@ const changeUser = (event) => {
 }
 
 const displayActivityInfo = () => {
-  const minActiveToday = activity.calculateMinutesActive(user, '2019/09/22');
+  const minActiveToday = activity.calculateMinutesActive(user, '2019/09/20');
+  const weeklyMinActive = activity.calculateAvgMinutesActiveForWeek(user, '2019/09/16')
   
   activitySection.innerHTML = `
   <div class="flip-card-inner"> 
@@ -157,26 +158,23 @@ const displayActivityInfo = () => {
     <br>active today</h3>
   </div>
   <div class="flip-card-back">
-    <h4>Daily Activity Data</h4>
-    <p></p>
     <h4>Weekly Activity Data</h4>
-    <p>Hours Slept: </p>
-    <p>Quality of Sleep: </p>
-    <h4>All Time Average Data</h4>
-    <p>Sleep Quality:</p>
-    <p>Hours Slept: </p>
+    <p>Avg Minutes Active Per Day: ${weeklyMinActive}</p>
   </div>
 </div>
 `
 }
 
 const displayStepInfo = () => {
-  const userActivityData = activity.__getUserDataByDate(user, '2019/09/22');
+  const userActivityData = activity.__getUserDataByDate(user, '2019/09/20');
   const stepsToday = userActivityData.numSteps;
-  const distanceInMiles = activity.calculateMilesWalked(user, '2019/09/22');
-  //const weeklyNumberOfSteps =
-  //const weeklyFlightsOfStairs = 
-  
+  const distanceInMiles = activity.calculateMilesWalked(user, '2019/09/20');
+  const stepsAchieved = activity.determineStepsAchieved(user, '2019/09/20');
+  const stairRecord = activity.findStairRecord(user);
+  console.log(user);
+
+
+
   stepsSection.innerHTML = `
   <div class="flip-card-inner"> 
   <div class="flip-card-front-steps">
@@ -185,11 +183,9 @@ const displayStepInfo = () => {
     <br>today</h3>
   </div>
   <div class="flip-card-back">
-    <h4>Miles Walked Today</h4>
-    <p>${distanceInMiles}</p>
-    <h4>Weekly Steps Data</h4>
-    <p>Number of Steps: </p>
-    <p>Flights of Stairs: </p>
+    <h3>${stepsAchieved}</h3>
+    <h4>Miles Walked Today: ${distanceInMiles}</h4>
+    <h4>All Time Stair Climbing Record: ${stairRecord}</h4>
   </div>
 </div>
   `
