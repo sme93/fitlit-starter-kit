@@ -14,9 +14,19 @@ FitLit is the beginning of a fitness/health tracking application. It is intended
 Users will see a daily overview for each category, displayed in their dashboard. Users are also able to see more detailed information and averages for a specific week, or see how their data compares to their friends and all other users (friendly competition only!). 
 
 ### Main View & Dashboard Display
-~GIF here~ 
-#### Backs of Widgets for More Information 
-~more GIFs~ 
+
+![](https://media.giphy.com/media/1Yf2RdiX96ZGMzpern/giphy.gif)
+
+
+#### View Friends Feature
+
+![](https://media.giphy.com/media/esLvxnZbXKYot5MnDU/giphy.gif)
+
+
+#### iPhone X View 
+
+![](https://media.giphy.com/media/czyEsFTJBF2ygBpTEj/giphy.gif)
+
 
 ### Setup
 
