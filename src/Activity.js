@@ -40,6 +40,8 @@ class Activity {
     const dataByDate = this.__getUserDataByDate(user, date);
     if (dataByDate.numSteps >= user.dailyStepGoal) {
       return `Congrats! You accomplished your step goal of ${user.dailyStepGoal} steps for today!`
+    } else {
+      return `You didn't reach your step goal of ${user.dailyStepGoal} today, but there's always tomorrow!`
     }
   }
 

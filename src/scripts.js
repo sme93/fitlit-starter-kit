@@ -39,22 +39,26 @@ const greetUser = () => {
 }
 
 const displayUserInformation = () => {
-  const icon = `<i class="far fa-address-card fa-5x"></i>`;
-  const heading = `<h3>Your Information</h3>`;
   const markup = `
-      <p><span>Full Name: </span><span>${user.name}</span></p>
-      <p><span>Stride Length: </span><span>${user.strideLength}</span></p>
-      <p><span>Daily Step Goal: </span><span>${user.dailyStepGoal}</span></p>`
+  <i class="far fa-address-card fa-5x"></i>
+  <h3 class="card-header">YOUR INFORMATION</h3>
+  <i class="fas fa-circle fa-1x" id="userCircle"></i>
+    <p class="card-title">NAME</p><p>${user.name}</p>
+    <p class="card-title">STRIDE LENGTH</p>
+    <p>${user.strideLength}</p>
+    <p class="card-title">DAILY STEP GOAL</p>
+    <p>${user.dailyStepGoal}</p>`
   
-  userInformationSection.innerHTML = `${icon} ${heading} ${markup}`;
+  userInformationSection.innerHTML = markup;
 }
 
 const displayFriends = () => {
   const icon = `<i class="fas fa-users fa-5x"></i>`;
-  const heading = `<h3>Your Friends</h3>`
+  const heading = `<h3 class="card-header">YOUR FRIENDS</h3>
+  <i class="fas fa-circle fa-1x" id="userCircle"></i>`
   const markup = user.friends.reduce((acc, friend) => {
     const currentFriend = allUsers.findUserData(friend);
-    acc += `<p id=${currentFriend.id} > ${currentFriend.name}</p>`
+    acc += `<p class="friend-names" id=${currentFriend.id} > ${currentFriend.name}</p>`
     return acc;
   }, '');
 
@@ -65,25 +69,27 @@ const displayAllUserAvgs = () => {
   const userActivityData = activity.__getUserDataByDate(user, '2019/09/20');
   const stepsToday = userActivityData.numSteps;
   const icon = `<i class="fas fa-running fa-5x"></i>`;
-  const heading = `<h3>All User Comparisons</h3>`;
+  const heading = `<h3 class="card-header">USER AVERAGES</h3>`;
   const markup = `
   <div>
-    <p>Your Average Step Goal: ${user.dailyStepGoal} 
-    <br>vs.
-    <br>All User's Average Step Goal:${allUsers.calculateAvgStepGoal()}</p>
-    <p>Your Number of Steps: ${stepsToday}
-    <br>vs.
-    <br>All User's Number of Steps Today: 
-      ${activity.calculateAllUserStepAvg('2019/09/20')}</p>
-    <p>Your Minutes Active: 
-      ${activity.calculateMinutesActive(user, '2019/09/22')}
-    <br>vs.
-    <br>All User's Minutes Active Today: 
-      ${activity.calculateAllUserActivityAvg('2019/09/20')}</p>
-    <p>Your Flights of Stairs Climbed: ${activity.data[user.id].flightsOfStairs}
-    <br>vs.
-    <br>All User's Flights of Stairs Climbed Today:   
-      ${activity.calculateAllUserStairAvg('2019/09/20')}</p>
+  <i class="fas fa-circle fa-1x" id="userCircle"></i>
+    <p class="avgs"></i>Steps</p>
+      <p class="card-title">OVERALL GOAL</p>
+      <p class="comparisons">Yours: ${user.dailyStepGoal} 
+      <br>All User: ${allUsers.calculateAvgStepGoal()}</p>
+      <p class="card-title">TODAY'S</p>
+      <p class="comparisons">Yours: <b>${stepsToday}</b>
+      <br>All User: ${activity.calculateAllUserStepAvg('2019/09/20')}</p>
+    <br>
+    <i class="fas fa-circle fa-1x"></i>
+    <p class="avgs">Activity</p>
+    <p class="card-title">MINUTES ACTIVE</p>
+      <p class="comparisons">Yours: ${activity.calculateMinutesActive(user, '2019/09/22')} minutes
+      <br>All Users: ${activity.calculateAllUserActivityAvg('2019/09/20')} minutes</p>
+      <br>
+      <p class="card-title">STAIRS CLIMBED</p>
+      <p class="comparisons">Yours: ${activity.data[user.id].flightsOfStairs}
+      <br>All Users: ${activity.calculateAllUserStairAvg('2019/09/20')}</p>
   </div>`
 
   userAveragesSection.innerHTML = `${heading} ${markup} ${icon}`;
@@ -95,9 +101,10 @@ const displayHydrationInfo = () => {
   hydrationSection.innerHTML = ` 
   <div class="flip-card-inner">
   <div class="flip-card-front-hydration">
+    <p class="ounces">HYDRATION</p>
     <i class="fas fa-tint fa-5x"></i>
-    <h3>${hydration.returnOuncesByDate('2019/09/20')} ounces of
-    <br>water today</h3>
+    <h3>${hydration.returnOuncesByDate('2019/09/20')} ounces
+    <br>today</h3>
   </div>
   <div class="flip-card-back">
     <h4>Weekly Hydration Data</h4>
@@ -122,9 +129,10 @@ const displaySleepInfo = () => {
   sleepSection.innerHTML = `
   <div class="flip-card-inner"> 
   <div class="flip-card-front-sleep">
+    <p class="hours">SLEEP</p>
     <i class="far fa-moon fa-5x"></i>
-    <h3>${dayHoursSlept.toFixed(1)} hours of 
-    <br>sleep today</h3>
+    <h3>${dayHoursSlept.toFixed(1)} hours
+    <br>today</h3>
   </div>
   <div class="flip-card-back">
     <h4>Daily Sleep Data</h4>
@@ -153,9 +161,10 @@ const displayActivityInfo = () => {
   activitySection.innerHTML = `
   <div class="flip-card-inner"> 
   <div class="flip-card-front-activity">
+    <p class="feet">STEPS</p>
     <i class="fas fa-chart-line fa-5x"></i>
     <h3>${minActiveToday} minutes
-    <br>active today</h3>
+    <br>today</h3>
   </div>
   <div class="flip-card-back">
     <h4>Weekly Activity Data</h4>
@@ -175,6 +184,7 @@ const displayStepInfo = () => {
   stepsSection.innerHTML = `
   <div class="flip-card-inner"> 
   <div class="flip-card-front-steps">
+    <p class="minutes">ACTIVITY</p>
     <i class="fas fa-walking fa-5x"></i>
     <h3>${stepsToday} steps
     <br>today</h3>
