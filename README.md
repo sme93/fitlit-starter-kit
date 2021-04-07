@@ -35,16 +35,16 @@ Users will see a daily overview for each category, displayed in their dashboard.
 3. `cd` into repository.
 4. Run `open src/index.html` in your command line.
 
-*For running tests in Sleep.js, please comment out these lines of code*:
+*For running tests in Sleep.js, please comment out the if block around these lines of code, like so*:
 
 ```
-if (typeof module !== 'undefined') {
+//if (typeof module !== 'undefined') {
   const dayjs = require("dayjs");
   const isSameOrBefore = require('dayjs/plugin/isSameOrBefore');
   const isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
   dayjs.extend(isSameOrBefore);
   dayjs.extend(isSameOrAfter); 
-}
+//}
 ```
 
 **OR**
