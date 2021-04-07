@@ -1,19 +1,19 @@
-const chai = require('chai');
+const chai = require("chai");
 const expect = chai.expect;
 
-const UserRepository = require('../src/UserRepository');
+const UserRepository = require("../src/UserRepository");
 
-describe('UserRepository', () => {
+describe("UserRepository", () => {
   let userRepo;
   let users;
 
   beforeEach(() => {
     users = [
       { 
-        'id': 1,
-        'name': 'David Bowie',
-        "address": '15195 Nakia Tunnel, Erdmanport VA 19901-1697',
-        "email": 'd.bowie@gmail.com',
+        "id": 1,
+        "name": "David Bowie",
+        "address": "15195 Nakia Tunnel, Erdmanport VA 19901-1697",
+        "email": "d.bowie@gmail.com",
         "strideLength": 4.3,
         "dailyStepGoal": 40000,
         "friends": [
@@ -24,9 +24,9 @@ describe('UserRepository', () => {
       },
       {
         "id": 2,
-        "name": 'Billy Joel',
+        "name": "Billy Joel",
         "address": "30086 Kathryn Port, Ciceroland NE 07273",
-        "email": 'piano.man@outlook.com',
+        "email": "piano.man@outlook.com",
         "strideLength": 4.5,
         "dailyStepGoal": 5000,
         "friends": [
@@ -38,9 +38,9 @@ describe('UserRepository', () => {
       },
       {
         "id": 3,
-        "name": 'Tina Turner',
+        "name": "Tina Turner",
         "address": "85823 Bosco Fork, East Oscarstad MI 85126-5660",
-        "email": 'itstinaturner@gmail.com',
+        "email": "itstinaturner@gmail.com",
         "strideLength": 4.4,
         "dailyStepGoal": 15000,
         "friends": [
@@ -54,26 +54,26 @@ describe('UserRepository', () => {
     userRepo = new UserRepository(users);
   });
 
-  it('should be a function', () => {
-    expect(UserRepository).to.be.a('function');
+  it("should be a function", () => {
+    expect(UserRepository).to.be.a("function");
   });
 
-  it('should be an instance of UserRepository', () => {
+  it("should be an instance of UserRepository", () => {
     expect(userRepo).to.be.an.instanceOf(UserRepository);
   });
 
-  it('should hold user data', () => { 
+  it("should hold user data", () => { 
     expect(userRepo.userData).to.deep.equal(users);
   });
 
-  it('should return user data when given a user ID', () => {
+  it("should return user data when given a user ID", () => {
     const userData1 = userRepo.findUserData(1);
     
     expect(userData1).to.equal(users[0]);
   });
 
-  it('should calculate average step goal amongst all users', () => {
+  it("should calculate average step goal amongst all users", () => {
     const avgGoal = userRepo.calculateAvgStepGoal();
     expect(avgGoal).to.equal(20000);
   });
-})
+});

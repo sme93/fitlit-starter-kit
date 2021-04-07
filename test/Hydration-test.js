@@ -1,9 +1,9 @@
-const chai = require('chai');
+const chai = require("chai");
 const expect = chai.expect;
 
-const Hydration = require('../src/Hydration');
+const Hydration = require("../src/Hydration");
 
-describe('Hydration', () => {
+describe("Hydration", () => {
   let hydration, hydrationData;
 
   beforeEach(() => {
@@ -32,34 +32,34 @@ describe('Hydration', () => {
 
     hydration = new Hydration(1, hydrationData);
   });
-  it('should be a function', () => {
-    expect(Hydration).to.be.a('function');
+  it("should be a function", () => {
+    expect(Hydration).to.be.a("function");
   });
 
-  it('should be an instance of Hydration', () => {
+  it("should be an instance of Hydration", () => {
     expect(hydration).to.be.an.instanceOf(Hydration);
   });
 
-  it('should take in a user ID', () => {
+  it("should take in a user ID", () => {
     expect(hydration.id).to.equal(1);
   });
 
-  it('should hold hydration data', () => {
+  it("should hold hydration data", () => {
     const userData = hydrationData.filter(data => data.userID === 1);
     expect(hydration.hydrationData).to.deep.equal(userData);
   });
 
-  it('should calculate average daily ounces consumed for a user, for all time', () => {
+  it("should calculate average daily ounces consumed for a user, for all time", () => {
     const allTime = hydration.calculateAllTimeAvg();
     expect(allTime).to.equal(30)
   });
 
-  it('should return ounces consumed for a user, for a specific day', () => {
-    const ouncesConsumed = hydration.returnOuncesByDate('2019/06/15');
+  it("should return ounces consumed for a user, for a specific day", () => {
+    const ouncesConsumed = hydration.returnOuncesByDate("2019/06/15");
     expect(ouncesConsumed).to.equal(20);
   });
 
-  it('should return ounces consumed per day, over a week', () => {
+  it("should return ounces consumed per day, over a week", () => {
     const hydrationData = [
       {
         "userID": 1,
@@ -113,43 +113,43 @@ describe('Hydration', () => {
       }
     ];
     const hydration1 = new Hydration(1, hydrationData);
-      const weeklyOunces = hydration1.findDailyFluidIntakeForWeek('2019/06/15');
-      expect(weeklyOunces).to.deep.equal([
-        {
-          "userID": 1,
-          "date": "2019/06/15",
-          "numOunces": 20
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/16",
-          "numOunces": 25
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/17",
-          "numOunces": 30
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/18",
-          "numOunces": 40
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/19",
-          "numOunces": 45
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/20",
-          "numOunces": 50
-        },
-        {
-          "userID": 1,
-          "date": "2019/06/21",
-          "numOunces": 55
-        }
-      ]);
+    const weeklyOunces = hydration1.findDailyFluidIntakeForWeek("2019/06/15");
+    expect(weeklyOunces).to.deep.equal([
+      {
+        "userID": 1,
+        "date": "2019/06/15",
+        "numOunces": 20
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/16",
+        "numOunces": 25
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/17",
+        "numOunces": 30
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/18",
+        "numOunces": 40
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/19",
+        "numOunces": 45
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/20",
+        "numOunces": 50
+      },
+      {
+        "userID": 1,
+        "date": "2019/06/21",
+        "numOunces": 55
+      }
+    ]);
   });
-})
+});

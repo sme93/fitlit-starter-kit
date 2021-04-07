@@ -1,15 +1,15 @@
-const chai = require('chai');
+const chai = require("chai");
 const expect = chai.expect;
 
-const Sleep = require('../src/Sleep');
+const Sleep = require("../src/Sleep");
 
-describe('Sleep', () => {
+describe("Sleep", () => {
 
-  it('should be a function', () => {
-    expect(Sleep).to.be.a('function');
+  it("should be a function", () => {
+    expect(Sleep).to.be.a("function");
   });
 
-  it('should be an instance of Sleep', () => {
+  it("should be an instance of Sleep", () => {
     const sleep = new Sleep([{
       "userID": 1,
       "date": "2019/06/15",
@@ -32,7 +32,7 @@ describe('Sleep', () => {
     expect(sleep).to.be.an.instanceof(Sleep);
   });
 
-  it('should store sleepData', () => {
+  it("should store sleepData", () => {
     const sleep = new Sleep([{
       "userID": 1,
       "date": "2019/06/15",
@@ -55,9 +55,9 @@ describe('Sleep', () => {
     expect(sleep.sleepData.length).to.equal(3);
   });
 
-  describe('for a user', () => {
+  describe("for a user", () => {
 
-    it('should calculate the average number of hours slept per day', () => {
+    it("should calculate the average number of hours slept per day", () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -76,7 +76,7 @@ describe('Sleep', () => {
       expect(sleep.getAvgDailySleepByUserId(1)).to.equal(7.5);
     });
 
-    it('should calculate their average sleep quality per day over all time',
+    it("should calculate their average sleep quality per day over all time",
       () => {
         const sleep = new Sleep([
           {
@@ -96,7 +96,7 @@ describe('Sleep', () => {
         expect(sleep.getAvgAllTimeSleepQualityByUserId(1)).to.equal(7.5);
       });
 
-    it('should return how many hours slept for a specific day', () => {
+    it("should return how many hours slept for a specific day", () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -118,7 +118,7 @@ describe('Sleep', () => {
       expect(sleep.getHoursSleptForUserByDate(1, "2019/06/16")).to.equal(10);
     });
 
-    it('should return their sleep quality for a specific day', () => {
+    it("should return their sleep quality for a specific day", () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -140,7 +140,7 @@ describe('Sleep', () => {
       expect(sleep.getSleepQualityForUserByDate(1, "2019/06/16")).to.equal(10);
     });
 
-    it('should calculate how many hours slept per day over a week', () => {
+    it("should calculate how many hours slept per day over a week", () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -179,7 +179,7 @@ describe('Sleep', () => {
       ).to.equal(7.5);
     });
 
-    it('should calculate the average sleep quality per day over a week', () => {
+    it("should calculate the average sleep quality per day over a week", () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -218,9 +218,9 @@ describe('Sleep', () => {
       ).to.equal(7.5);
     });
   }); 
-  describe('for all users', () => {
+  describe("for all users", () => {
 
-    it('returns average sleep quality', () => {
+    it("returns average sleep quality", () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -239,7 +239,7 @@ describe('Sleep', () => {
       expect(sleep.getAllUsersAvgSleepQuality()).to.equal(7.5);
     });
 
-    it('returns all users with good sleep quality (over 3)', () => {
+    it("returns all users with good sleep quality (over 3)", () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -278,7 +278,7 @@ describe('Sleep', () => {
       ).to.deep.equal([1, 3]);
     });
 
-    it('returns the best sleeper by date', () => {
+    it("returns the best sleeper by date", () => {
       const sleep = new Sleep([
         {
           userID: 1,
@@ -294,7 +294,7 @@ describe('Sleep', () => {
       expect(sleep.getBestSleepersByDate("2019/06/15")).to.deep.equal([2]);
     });
 
-    it('returns the best sleepers by date', () => {
+    it("returns the best sleepers by date", () => {
       const sleep = new Sleep([
         {
           userID: 1,

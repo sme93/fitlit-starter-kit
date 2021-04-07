@@ -1,7 +1,7 @@
-if (typeof module !== 'undefined') {
+if (typeof module !== "undefined") {
   const dayjs = require("dayjs");
-  const isSameOrBefore = require('dayjs/plugin/isSameOrBefore');
-  const isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
+  const isSameOrBefore = require("dayjs/plugin/isSameOrBefore");
+  const isSameOrAfter = require("dayjs/plugin/isSameOrAfter");
   dayjs.extend(isSameOrBefore);
   dayjs.extend(isSameOrAfter);
 }
@@ -61,7 +61,7 @@ class Sleep {
   getDailyAvgSleptByWeekStarting(userID, date) {
     const sleepDataByUserId = this.__getUserDataById(userID);
     const firstDay = dayjs(date);
-    const lastDay = firstDay.add(6, 'day');
+    const lastDay = firstDay.add(6, "day");
 
     const daysInAWeek = sleepDataByUserId.filter(dataItem => {
       const currentIterationDate = dayjs(dataItem.date);
@@ -83,7 +83,7 @@ class Sleep {
   getDailyAvgSleepQualityByWeekStarting(userID, date) {
     const sleepDataByUserId = this.__getUserDataById(userID);
     const firstDay = dayjs(date);
-    const lastDay = firstDay.add(6, 'day');
+    const lastDay = firstDay.add(6, "day");
 
     const daysInAWeek = sleepDataByUserId.filter(dataItem => {
       const currentIterationDate = dayjs(dataItem.date);
@@ -111,7 +111,7 @@ class Sleep {
 
   getUsersBySleepQualityByWeekStarting(date) {
     const startOfTheWeek = dayjs(date);
-    const endOfTheWeek = startOfTheWeek.add(6, 'day');
+    const endOfTheWeek = startOfTheWeek.add(6, "day");
     const sleepsInWeek = this.sleepData.filter(dataItem => {
       const currentIterationDate = dayjs(dataItem.date);
       if (currentIterationDate.isSameOrBefore(endOfTheWeek)
@@ -166,7 +166,7 @@ class Sleep {
   }
 }
 
-if (typeof module !== 'undefined') {
+if (typeof module !== "undefined") {
   module.exports = Sleep;
 }
 

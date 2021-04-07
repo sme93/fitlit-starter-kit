@@ -10,12 +10,14 @@ class Activity {
   }
 
   __getUserDataByDate(user, date) {
-    return this.data.find(dataItem => dataItem.userID === user.id && dataItem.date === date);  
+    return this.data.find(dataItem => dataItem.userID === 
+      user.id && dataItem.date === date);  
   }
 
   calculateMilesWalked(user, date) {
     const dataByDate = this.__getUserDataByDate(user, date);
-    const milesWalked = Math.floor((dataByDate.numSteps * user.strideLength) / 5280);
+    const milesWalked = Math.floor((dataByDate  
+      .numSteps * user.strideLength) / 5280);
     return milesWalked;
   }
 
@@ -39,15 +41,18 @@ class Activity {
   determineStepsAchieved(user, date) {
     const dataByDate = this.__getUserDataByDate(user, date);
     if (dataByDate.numSteps >= user.dailyStepGoal) {
-      return `Congrats! You accomplished your step goal of ${user.dailyStepGoal} steps for today!`
+      return `Congrats! You accomplished your step goal of 
+        ${user.dailyStepGoal} steps for today!`
     } else {
-      return `You didn't reach your step goal of ${user.dailyStepGoal} today, but there's always tomorrow!`
+      return `You didn't reach your step goal of 
+        ${user.dailyStepGoal} today, but there's always tomorrow!`
     }
   }
 
   displayExceededStepGoal(user) {
     const userDataByID = this.__getUserDataById(user);
-    const datesExceeded = userDataByID.filter(dataItem => dataItem.numSteps > user.dailyStepGoal);
+    const datesExceeded = userDataByID
+      .filter(dataItem => dataItem.numSteps > user.dailyStepGoal);
     const reducedDatesExceeded = datesExceeded.reduce((dateObj, dataItem) => {
       dateObj[dataItem.date] = dataItem.numSteps;
       return dateObj;
@@ -94,6 +99,6 @@ class Activity {
   }
 }
 
-if (typeof module !== 'undefined') {
+if (typeof module !== "undefined") {
   module.exports = Activity;
 }
