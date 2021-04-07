@@ -43,7 +43,9 @@ Users will see a daily overview for each category, displayed in their dashboard.
   const isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
   dayjs.extend(isSameOrBefore);
   dayjs.extend(isSameOrAfter);
-}`
+  
+}
+`
 
 **OR**
 
