@@ -49,7 +49,7 @@ if (typeof module !== 'undefined') {
 
 **OR**
 
-[Click here](deployed link here) to view the deployed site. 
+[Click here](https://sme93.github.io/fitlit-starter-kit/) to view the deployed site. 
 
 ### Technologies 
 - JavaScript
