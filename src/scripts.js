@@ -1,14 +1,9 @@
-
-
 // VARIABLES & QUERY SELECTORS 
 const allUsers = new UserRepository(userData);
 const sleep = new Sleep(sleepData);
 let user;
 let activity;
 let hydration;
-
-
-
 
 const userNameGreeting = document.querySelector('#userGreeting');
 const userInformationSection = 
@@ -19,8 +14,6 @@ const hydrationSection = document.querySelector('#hydrationSection');
 const sleepSection = document.querySelector('#sleepSection');
 const activitySection = document.querySelector('#activitySection');
 const stepsSection = document.querySelector('#stepsSection');
-
-
 
 //FUNCTIONS 
 const displayAllInfo = (event) => {
@@ -40,7 +33,6 @@ const displayAllInfo = (event) => {
   displayActivityInfo();
   displayStepInfo();
 }
-
 
 const greetUser = () => {
   userNameGreeting.innerHTML = `Hi, ${user.getFirstName()}!`;
@@ -125,9 +117,12 @@ const displayHydrationInfo = () => {
 
 const displaySleepInfo = () => {
   const dayHoursSlept = sleep.getHoursSleptForUserByDate(user.id, '2019/09/20');
-  const daySleepQuality = sleep.getSleepQualityForUserByDate(user.id, '2019/09/20');
-  const weekHoursSlept = sleep.getDailyAvgSleptByWeekStarting(user.id, '2019/09/16');
-  const weekSleepQuality = sleep.getDailyAvgSleepQualityByWeekStarting(user.id, '2019/09/16');
+  const daySleepQuality = sleep
+    .getSleepQualityForUserByDate(user.id, '2019/09/20');
+  const weekHoursSlept = sleep
+    .getDailyAvgSleptByWeekStarting(user.id, '2019/09/16');
+  const weekSleepQuality = sleep
+    .getDailyAvgSleepQualityByWeekStarting(user.id, '2019/09/16');
   const allSleepQuality = sleep.getAvgAllTimeSleepQualityByUserId(user.id);
   const allHoursSlept = sleep.getAvgDailySleepByUserId(user.id);
 
@@ -160,7 +155,8 @@ const changeUser = (event) => {
 
 const displayActivityInfo = () => {
   const minActiveToday = activity.calculateMinutesActive(user, '2019/09/20');
-  const weeklyMinActive = activity.calculateAvgMinutesActiveForWeek(user, '2019/09/16')
+  const weeklyMinActive = activity
+    .calculateAvgMinutesActiveForWeek(user, '2019/09/16')
   
   activitySection.innerHTML = `
   <div class="flip-card-inner"> 
@@ -184,9 +180,6 @@ const displayStepInfo = () => {
   const distanceInMiles = activity.calculateMilesWalked(user, '2019/09/20');
   const stepsAchieved = activity.determineStepsAchieved(user, '2019/09/20');
   const stairRecord = activity.findStairRecord(user);
-  console.log(user);
-
-
 
   stepsSection.innerHTML = `
   <div class="flip-card-inner"> 
@@ -204,7 +197,6 @@ const displayStepInfo = () => {
 </div>
   `
 }
-
 
 // EVENT LISTENERS 
 window.addEventListener('load', displayAllInfo);
