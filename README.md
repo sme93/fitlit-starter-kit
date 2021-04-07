@@ -39,11 +39,17 @@ Users will see a daily overview for each category, displayed in their dashboard.
 
 `
 if (typeof module !== 'undefined') {
+
   const dayjs = require("dayjs");
+  
   const isSameOrBefore = require('dayjs/plugin/isSameOrBefore');
+  
   const isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
+  
   dayjs.extend(isSameOrBefore);
+  
   dayjs.extend(isSameOrAfter);
+  
 }
 `
 
