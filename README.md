@@ -35,7 +35,7 @@ Users will see a daily overview for each category, displayed in their dashboard.
 3. `cd` into repository.
 4. Run `open src/index.html` in your command line.
 
-*For running tests in Sleep.js, please comment out these lines of code*
+*For running tests in Sleep.js, please comment out these lines of code*:
 
 `if (typeof module !== 'undefined') {
   const dayjs = require("dayjs");
