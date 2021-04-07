@@ -50,7 +50,7 @@ const displayUserInformation = () => {
   const markup = `
   <i class="far fa-address-card fa-5x"></i>
   <h3 class="card-header">YOUR INFORMATION</h3>
-  <i class="fas fa-circle fa-2x" id="userCircle"></i>
+  <i class="fas fa-circle fa-1x" id="userCircle"></i>
     <p class="card-title">NAME</p><p>${user.name}</p>
     <p class="card-title">STRIDE LENGTH</p>
     <p>${user.strideLength}</p>
@@ -63,7 +63,7 @@ const displayUserInformation = () => {
 const displayFriends = () => {
   const icon = `<i class="fas fa-users fa-5x"></i>`;
   const heading = `<h3 class="card-header">YOUR FRIENDS</h3>
-  <i class="fas fa-circle fa-2x" id="userCircle"></i>`
+  <i class="fas fa-circle fa-1x" id="userCircle"></i>`
   const markup = user.friends.reduce((acc, friend) => {
     const currentFriend = allUsers.findUserData(friend);
     acc += `<p class="friend-names" id=${currentFriend.id} > ${currentFriend.name}</p>`
@@ -80,6 +80,7 @@ const displayAllUserAvgs = () => {
   const heading = `<h3 class="card-header">USER AVERAGES</h3>`;
   const markup = `
   <div>
+  <i class="fas fa-circle fa-1x" id="userCircle"></i>
     <p class="avgs"></i>Steps</p>
       <p class="card-title">OVERALL GOAL</p>
       <p class="comparisons">Yours: ${user.dailyStepGoal} 
@@ -88,7 +89,7 @@ const displayAllUserAvgs = () => {
       <p class="comparisons">Yours: <b>${stepsToday}</b>
       <br>All User: ${activity.calculateAllUserStepAvg('2019/09/20')}</p>
     <br>
-    <i class="fas fa-circle fa-2x"></i>
+    <i class="fas fa-circle fa-1x"></i>
     <p class="avgs">Activity</p>
     <p class="card-title">MINUTES ACTIVE</p>
       <p class="comparisons">Yours: ${activity.calculateMinutesActive(user, '2019/09/22')} minutes
