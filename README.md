@@ -35,6 +35,15 @@ Users will see a daily overview for each category, displayed in their dashboard.
 3. `cd` into repository.
 4. Run `open src/index.html` in your command line.
 
+*For running tests in Sleep.js, please comment out these lines of code*
+`if (typeof module !== 'undefined') {
+  const dayjs = require("dayjs");
+  const isSameOrBefore = require('dayjs/plugin/isSameOrBefore');
+  const isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
+  dayjs.extend(isSameOrBefore);
+  dayjs.extend(isSameOrAfter);
+}`
+
 **OR**
 
 [Click here](deployed link here) to view the deployed site. 
@@ -49,10 +58,10 @@ Users will see a daily overview for each category, displayed in their dashboard.
 ### Project Wins & Challenges
 
 #### Wins
-Share your wins! 
+For this project, something that we considered to be a win was installing and using `day.js`. This was the first time we were introduced to using packages in projects! Sarah was able to get it working in our Class files and on the DOM. Another thing we consider to be a win is having our wireframe and final product be very similar to each other. We stuck with our initial plan and were able to execute it how we had initially visualized. We also enjoyed having several opportunities to use our new array iterator methods. 
 
 #### Challenges
-Share your challenges! 
+Some challenges we encountered in the project also had to do with using packages. We would have liked to have had time to experiment using something like `chart.js` to display all of our user's information and comparisons, resulting in a more cohesive page design with less text. We also ran into some issues with `day.js` not working well with other libraries. 
 
 ### Future Project Iterations 
 - Implement additional packages such as [Chart.js](https://www.npmjs.com/package/chart.js) to display information on the back of widget cards. 
