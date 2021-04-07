@@ -1,5 +1,4 @@
 * {
-  /* border: 1px solid red; */
   font-family: "Roboto", sans-serif;
 }
 
@@ -12,7 +11,6 @@ h3 {
 }
 
 body {
-  /* background-color: #E7F5FC; */
   background-color: #e7ebf7;
 }
 
@@ -35,7 +33,6 @@ p {
   border-radius: 5px;
 }
 
-/* ~~~~~GREETING / USER INFO~~~~~ */
 .greeting-container {
   display: flex;
   height: 13.5vh;
@@ -78,6 +75,7 @@ p {
 
 .fa-running {
   margin-top: 2rem;
+  margin-bottom: 2rem;
 }
 
 .user-information-container {
@@ -96,8 +94,6 @@ p {
   border-radius: 5px;
   box-shadow: 0 2px 8px 0 rgb(0 0 0 / 15%);
 }
-
-/* ~~~~~WIDGET INFO~~~~~ */
 
 .dashboard {
   font-size: 13px;
@@ -136,8 +132,6 @@ p {
 .minutes-active {
   height: 40vh;
 }
-
-/*~~~~~FLIP CARD~~~~~*/
 
 .flip-card {
   perspective: 1000px;
@@ -209,8 +203,6 @@ p {
   margin-bottom: 0.25rem;
 }
 
-/*~~~~FRIENDS AND ALL USER AVGS~~~~ */
-
 .all-user-comparison-container {
   display: grid;
   grid-gap: 2rem;
@@ -252,7 +244,7 @@ p {
   letter-spacing: 5px;
   text-align: left;
   margin-top: 0;
-  margin-bottom: 0'
+  margin-bottom: 0;
   margin-left: 1em;
 }
 
@@ -294,7 +286,4 @@ p {
     margin-bottom: 2rem;
     margin-left: 3rem;
   }
-
-
-}
 }

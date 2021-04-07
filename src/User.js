@@ -10,10 +10,10 @@ class User {
   }
 
   getFirstName() {
-    return this.name.split(' ')[0];
+    return this.name.split(" ")[0];
   }
 }
 
-if (typeof module !== 'undefined') {
+if (typeof module !== "undefined") {
   module.exports = User;
 }
