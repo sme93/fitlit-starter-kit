@@ -75,10 +75,10 @@ const displayAllUserAvgs = () => {
     <p class="avgs"></i>Steps</p>
       <p class="card-title">OVERALL GOAL</p>
       <p class="comparisons">Yours: ${user.dailyStepGoal} 
-      <br>All User: ${allUsers.calculateAvgStepGoal()}</p>
+      <br>All Users: ${allUsers.calculateAvgStepGoal()}</p>
       <p class="card-title">TODAY'S</p>
       <p class="comparisons">Yours: <b>${stepsToday}</b>
-      <br>All User: ${activity.calculateAllUserStepAvg("2019/09/20")}</p>
+      <br>All Users: ${activity.calculateAllUserStepAvg("2019/09/20")}</p>
     <br>
     <i class="fas fa-circle fa-1x"></i>
     <p class="avgs">Activity</p>
