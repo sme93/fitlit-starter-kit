@@ -37,13 +37,13 @@ Users will see a daily overview for each category, displayed in their dashboard.
 
 *For running tests in Sleep.js, please comment out these lines of code*:
 
-`if (typeof module !== 'undefined') {
+`
+if (typeof module !== 'undefined') {
   const dayjs = require("dayjs");
   const isSameOrBefore = require('dayjs/plugin/isSameOrBefore');
   const isSameOrAfter = require('dayjs/plugin/isSameOrAfter');
   dayjs.extend(isSameOrBefore);
   dayjs.extend(isSameOrAfter);
-  
 }
 `
 
