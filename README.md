@@ -33,7 +33,7 @@ Users will see a daily overview for each category, displayed in their dashboard.
 1. `Fork` this repository.
 2. `clone` down to your local machine.
 3. `cd` into repository.
-4. Run `open src/index.html` in your command line.
+4. Run `open index.html` in your command line.
 
 *For running tests in Sleep.js, please comment out the if block around these lines of code, like so*:
 
